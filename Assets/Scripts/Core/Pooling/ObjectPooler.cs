@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assignment.Pooling
+namespace Assignment.Core.Pooling
 {
     [RequireComponent(typeof(IPoolableObjectEditorRestriction))]
     public class ObjectPooler : MonoBehaviour

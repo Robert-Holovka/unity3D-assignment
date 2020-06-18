@@ -1,4 +1,4 @@
-﻿namespace Assignment.Pooling
+﻿namespace Assignment.Core.Pooling
 {
     public interface IPoolableObject
     {
