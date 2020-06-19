@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Assignment.Player
 {
-    public class Health : MonoBehaviour
+    public class PlayerHealth : MonoBehaviour, IDamageable
     {
         [SerializeField] float healthRegenerationRate;
         [SerializeField] Image healthFillImage;
