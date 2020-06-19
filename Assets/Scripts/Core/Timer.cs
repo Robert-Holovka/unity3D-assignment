@@ -26,5 +26,10 @@ namespace Assignment.Core
 
             OnTimerFinish?.Invoke();
         }
+
+        public void SetDuration(float duration)
+        {
+            this.duration = duration;
+        }
     }
 }

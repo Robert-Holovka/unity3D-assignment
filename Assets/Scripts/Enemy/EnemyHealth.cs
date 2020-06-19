@@ -1,7 +1,7 @@
 ﻿using Assignment.ScriptableObjects;
 using UnityEngine;
 
-namespace Assignment
+namespace Assignment.Enemy
 {
     public class EnemyHealth : MonoBehaviour, IDamageable
     {
@@ -33,6 +33,7 @@ namespace Assignment
 
             if (currentHealth <= lowHealthThreshold)
             {
+                // TODO: Find a better way
                 meshRenderer.material.color = baseStats.LowHealthColor;
             }
         }
