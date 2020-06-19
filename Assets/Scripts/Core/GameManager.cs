@@ -11,10 +11,7 @@ namespace Assignment.Core
 
         private GameState gameState;
 
-        void Start()
-        {
-            SetGameState(GameState.Start);
-        }
+        private void Start() => SetGameState(GameState.Start);
 
         private void Update()
         {
@@ -29,7 +26,7 @@ namespace Assignment.Core
         private void SetGameState(GameState gameState)
         {
             this.gameState = gameState;
-            OnGameStateChange(gameState);
+            OnGameStateChange?.Invoke(gameState);
 
             if (gameState == Paused)
             {

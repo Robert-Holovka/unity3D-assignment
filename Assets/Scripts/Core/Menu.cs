@@ -1,6 +1,5 @@
 ﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assignment.Core
 {
@@ -16,20 +15,9 @@ namespace Assignment.Core
 
         private GameManager gameManager;
 
-        private void Awake()
-        {
-            gameManager = FindObjectOfType<GameManager>();
-        }
-
-        private void OnEnable()
-        {
-            gameManager.OnGameStateChange += OnGameStateChanged;
-        }
-
-        private void OnDisable()
-        {
-            gameManager.OnGameStateChange -= OnGameStateChanged;
-        }
+        private void Awake() => gameManager = FindObjectOfType<GameManager>();
+        private void OnEnable() => gameManager.OnGameStateChange += OnGameStateChanged;
+        private void OnDisable() => gameManager.OnGameStateChange -= OnGameStateChanged;
 
         private void OnGameStateChanged(GameState gameState)
         {
@@ -61,14 +49,8 @@ namespace Assignment.Core
             menuCanvas.enabled = enabled;
         }
 
-        public void OnLoadSceneButtonClicked()
-        {
-            gameManager.LoadScene();
-        }
+        public void OnLoadSceneButtonClicked() => gameManager.LoadScene();
 
-        public void OnQuitButtonClicked()
-        {
-            Application.Quit();
-        }
+        public void OnQuitButtonClicked() => Application.Quit();
     }
 }
