@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assignment.Characters;
+using UnityEngine;
 
 namespace Assignment.Weapons
 {

@@ -91,9 +91,9 @@ GameObject:
   - component: {fileID: 8546563445203182249}
   - component: {fileID: 6192259086891587759}
   - component: {fileID: 7037164577482669558}
-  - component: {fileID: 2714235801653598754}
   - component: {fileID: 781277706332336236}
   - component: {fileID: 2318783398266283345}
+  - component: {fileID: 4681248067583342474}
   m_Layer: 8
   m_Name: Enemy Character
   m_TagString: Untagged
@@ -198,19 +198,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2714235801653598754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6512319116377437934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4fa736f668ccde45bb980a029f79be3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseStats: {fileID: 11400000, guid: b0f8cb54c0413244193350bd89cc3c28, type: 2}
 --- !u!114 &781277706332336236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,3 +224,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypointDwellingTime: 3
+--- !u!114 &4681248067583342474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6512319116377437934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4fa736f668ccde45bb980a029f79be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseStats: {fileID: 11400000, guid: b0f8cb54c0413244193350bd89cc3c28, type: 2}

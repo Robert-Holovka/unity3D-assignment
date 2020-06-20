@@ -4,7 +4,7 @@ namespace Assignment.Core
 {
     public class PersistableObjectSpawner : MonoBehaviour
     {
-        [SerializeField] GameObject[] persistableObjects;
+        [SerializeField] GameObject[] persistableObjects = default;
 
         private void Awake()
         {
