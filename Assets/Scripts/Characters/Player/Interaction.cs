@@ -1,42 +1,83 @@
-﻿using Assignment.Pickups;
+﻿using Assignment.Inventory;
+using Assignment.Pickups;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Interaction : MonoBehaviour
+namespace Assignment.Characters.Player
 {
-    [SerializeField] GameObject tooltipPanel = default;
-    [SerializeField] float interactionRadius = 1f;
-    [SerializeField] Color radiusColor = Color.blue;
-
-    private readonly Vector3 cameraCenter = new Vector3(0.5f, 0.5f);
-    private new Camera camera;
-    private Text tooltipText;
-
-    private void Awake()
+    public class Interaction : MonoBehaviour
     {
-        camera = GetComponentInChildren<Camera>();
-        tooltipText = tooltipPanel.GetComponentInChildren<Text>();
-        tooltipPanel.SetActive(false);
-    }
+        [SerializeField] GameObject tooltipPanel = default;
+        [SerializeField] float interactionRadius = 1f;
+        [SerializeField] Color radiusColor = Color.blue;
 
-    private void Update()
-    {
-        Ray ray = camera.ViewportPointToRay(cameraCenter);
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, interactionRadius))
+        private readonly Vector3 cameraCenter = new Vector3(0.5f, 0.5f);
+
+        private IInventorySystem inventorySystem;
+        private new Camera camera;
+        private Text tooltipText;
+
+        private void Awake()
         {
-            if (hitInfo.collider.TryGetComponent(out IPickupable pickup))
+            camera = GetComponentInChildren<Camera>();
+            tooltipText = tooltipPanel.GetComponentInChildren<Text>();
+            inventorySystem = GetComponentInChildren<IInventorySystem>();
+        }
+
+        private void Start()
+        {
+            tooltipPanel.SetActive(false);
+        }
+
+        private void Update()
+        {
+            bool lookingAtPickup = FindNearbyPickup(out IPickupableItem pickup);
+            UpdateTooltipUI(lookingAtPickup, pickup);
+
+            if (lookingAtPickup && Input.GetKeyDown(KeyCode.E))
             {
-                tooltipText.text = pickup.PickupInfo.GetTooltip("E");
-                tooltipPanel.SetActive(true);
-                return;
+                PickItem(pickup);
             }
         }
-        tooltipPanel.SetActive(false);
-    }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = radiusColor;
-        Gizmos.DrawWireSphere(transform.position, interactionRadius);
+        private void PickItem(IPickupableItem pickup)
+        {
+            bool itemPicked = inventorySystem.AddItem(pickup);
+
+            if (itemPicked)
+            {
+                pickup.OnItemPicked();
+            }
+            else
+            {
+                Debug.LogWarning($"Can't pick up item [{pickup.ItemInfo.Name}], inventory is full!");
+            }
+        }
+
+        private void UpdateTooltipUI(bool active, IPickupableItem pickup)
+        {
+            tooltipPanel.SetActive(active);
+            if (active)
+            {
+                tooltipText.text = pickup.ItemInfo.GetTooltip("E");
+            }
+        }
+
+        private bool FindNearbyPickup(out IPickupableItem pickup)
+        {
+            Ray ray = camera.ViewportPointToRay(cameraCenter);
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, interactionRadius))
+            {
+                return hitInfo.collider.TryGetComponent(out pickup);
+            }
+            pickup = null;
+            return false;
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = radiusColor;
+            Gizmos.DrawWireSphere(transform.position, interactionRadius);
+        }
     }
 }

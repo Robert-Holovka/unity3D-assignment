@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f06a63fb356d6a847bb4c71cd71a48f9, type: 3}
-  m_Name: Yellow Cube
+  m_Name: Green Cube
   m_EditorClassIdentifier: 
-  name: Yellow Cube
-  type: Cube
-  icon: {fileID: 0}
-  maxStack: 1
-  amount: 1
+  name: Green Cube
+  type: Green Cube
+  icon: {fileID: 21300000, guid: 040ab6a18186730449e796f66df0c3b3, type: 3}
+  maxStack: 5

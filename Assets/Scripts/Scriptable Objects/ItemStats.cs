@@ -2,8 +2,8 @@
 
 namespace Assignment.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "New Pickup Info", menuName = "Pickup Info", order = 1)]
-    public class PickupStats : ScriptableObject
+    [CreateAssetMenu(fileName = "New Item Info", menuName = "Item Info", order = 1)]
+    public class ItemStats : ScriptableObject
     {
         [SerializeField] new string name = default;
         [SerializeField] string type = default;

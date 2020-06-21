@@ -2,15 +2,15 @@
 using Assignment.ScriptableObjects;
 using UnityEngine;
 
-public class Pickup : MonoBehaviour, IPickupable
+public class Pickup : MonoBehaviour, IPickupableItem
 {
-    [SerializeField] PickupStats pickupInfo = default;
+    [SerializeField] ItemStats pickupInfo = default;
     [SerializeField] int amount = 1;
 
-    public PickupStats PickupInfo { get => pickupInfo; }
-    public int Amount { get => amount; }
+    public ItemStats ItemInfo { get => pickupInfo; }
+    public int Amount { get => amount; set => amount = value; }
 
-    public void OnObjectPicked()
+    public void OnItemPicked()
     {
         // TODO: animation
         Destroy(gameObject);
