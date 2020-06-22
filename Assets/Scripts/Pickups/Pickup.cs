@@ -12,7 +12,6 @@ public class Pickup : MonoBehaviour, IPickupableItem
 
     public void OnItemPicked()
     {
-        // TODO: animation
         Destroy(gameObject);
     }
 }

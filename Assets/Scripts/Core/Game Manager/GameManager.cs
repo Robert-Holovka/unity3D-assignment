@@ -12,6 +12,9 @@ namespace Assignment.Core.Game
 {
     public class GameManager : MonoBehaviour, ILevelManager, ILevelEventHandler
     {
+        [Tooltip("For easier testing")]
+        [SerializeField] GameState startState;
+        [Header("UI")]
         [SerializeField] GameObject loadingCanvas = default;
         [SerializeField] Slider loadingBar = default;
         [SerializeField] Text loadingProgressText = default;
@@ -27,7 +30,15 @@ namespace Assignment.Core.Game
         private LevelGoal levelGoal;
 
         #region Unity Methods
-        private void Start() => SetGameState(GameState.Start);
+        private void Start()
+        {
+            SetGameState(startState);
+            // For testing purposes
+            if (startState != GameState.Start)
+            {
+                OnLevelLoaded(SceneManager.GetActiveScene().name);
+            }
+        }
 
         private void Update()
         {
