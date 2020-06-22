@@ -3,7 +3,6 @@ using UnityEngine.Events;
 
 namespace Assignment.Zones
 {
-    [System.Serializable]
     public class ZoneTrigger : MonoBehaviour
     {
         public UnityAction<Collider> OnZoneEnter;

@@ -10,28 +10,22 @@ namespace Assignment.Zones
 
         private IDamageable damageable;
 
-        public override void OnZoneEntered(Collider player)
+        protected override void OnZoneEntered(Collider player)
         {
             playerInZone = true;
             if (damageable == null)
             {
                 damageable = player.GetComponent<IDamageable>();
             }
-            if (audioClipHandler != null)
-            {
-                audioClipHandler.PlayAudio();
-            }
 
+            audioClipTranquilizer.PlayAudio();
             StartCoroutine(ReduceHealth(damagePerSecond));
         }
 
-        public override void OnZoneLeft()
+        protected override void OnZoneLeft()
         {
-            if (audioClipHandler != null)
-            {
-                audioClipHandler.StopAudio();
-            }
             playerInZone = false;
+            audioClipTranquilizer.StopAudio();
             StopAllCoroutines();
         }
 

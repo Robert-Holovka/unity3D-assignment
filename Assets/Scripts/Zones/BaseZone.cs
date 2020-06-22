@@ -7,13 +7,12 @@ namespace Assignment.Zones
     public abstract class BaseZone : MonoBehaviour
     {
         protected ZoneTrigger zoneTrigger;
-        protected AudioClipTranquilizer audioClipHandler;
-
+        protected AudioClipTranquilizer audioClipTranquilizer;
         protected bool playerInZone = false;
 
         private void Awake()
         {
-            audioClipHandler = GetComponent<AudioClipTranquilizer>();
+            audioClipTranquilizer = GetComponent<AudioClipTranquilizer>();
             zoneTrigger = GetComponent<ZoneTrigger>();
         }
 
@@ -29,7 +28,7 @@ namespace Assignment.Zones
             zoneTrigger.OnZoneLeave -= OnZoneLeft;
         }
 
-        public abstract void OnZoneEntered(Collider other);
-        public abstract void OnZoneLeft();
+        protected abstract void OnZoneEntered(Collider other);
+        protected abstract void OnZoneLeft();
     }
 }

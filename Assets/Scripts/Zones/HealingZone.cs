@@ -10,28 +10,22 @@ namespace Assignment.Zones
 
         private IRestorable restorable;
 
-        public override void OnZoneEntered(Collider player)
+        protected override void OnZoneEntered(Collider player)
         {
             playerInZone = true;
             if (restorable == null)
             {
                 restorable = player.GetComponent<IRestorable>();
             }
-            if (audioClipHandler != null)
-            {
-                audioClipHandler.PlayAudio();
-            }
 
+            audioClipTranquilizer.PlayAudio();
             StartCoroutine(RestoreHealth(healthPerSecond));
         }
 
-        public override void OnZoneLeft()
+        protected override void OnZoneLeft()
         {
-            if (audioClipHandler != null)
-            {
-                audioClipHandler.StopAudio();
-            }
             playerInZone = false;
+            audioClipTranquilizer.StopAudio();
             StopAllCoroutines();
         }
 
