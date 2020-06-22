@@ -50,16 +50,16 @@ namespace Assignment.Characters.Player
         {
             if (isJumping && isGrounded)
             {
+                isGrounded = false;
                 rigidBody.AddRelativeForce(new Vector3(0f, jumpForce));
             }
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnCollisionEnter(Collision collision)
         {
-            if (other.CompareTag("Ground"))
+            if (collision.gameObject.CompareTag("Ground"))
             {
                 isGrounded = true;
-                Debug.Log("Okinuo sam ovo");
             }
         }
     }
