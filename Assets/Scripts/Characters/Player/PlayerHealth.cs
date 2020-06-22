@@ -45,6 +45,7 @@ namespace Assignment.Characters.Player
         {
             currentHealth += healthPoints;
             currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+            UpdateHealthUI();
         }
     }
 }

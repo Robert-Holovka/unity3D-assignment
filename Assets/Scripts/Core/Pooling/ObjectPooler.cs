@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Assignment.Scripts.Core.Pooling;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assignment.Core.Pooling
 {
     [RequireComponent(typeof(IPoolableObjectEditorRestriction))]
-    public class ObjectPooler : MonoBehaviour
+    public class ObjectPooler : MonoBehaviour, IObjectPooler
     {
 
         [System.Serializable]
@@ -75,17 +76,17 @@ namespace Assignment.Core.Pooling
             return poolableObject != null;
         }
 
-        public T SpawnObject<T>(T prefab) where T : Object
+        public GameObject SpawnObject(GameObject prefab)
         {
             return SpawnObject(prefab, Vector3.zero);
         }
 
-        public T SpawnObject<T>(T prefab, Vector3 position) where T : Object
+        public GameObject SpawnObject(GameObject prefab, Vector3 position)
         {
             return SpawnObject(prefab, position, Quaternion.identity);
         }
 
-        public T SpawnObject<T>(T prefab, Vector3 position, Quaternion rotation) where T : Object
+        public GameObject SpawnObject(GameObject prefab, Vector3 position, Quaternion rotation)
         {
             string poolTag = prefab.name;
             if (!poolDictionary.ContainsKey(poolTag))
@@ -106,13 +107,11 @@ namespace Assignment.Core.Pooling
 
             gameObject.transform.position = position;
             gameObject.transform.rotation = rotation;
-            gameObject.GetComponent<IPoolableObject>().OnObjectActivation();
-
             gameObject.SetActive(true);
+
             pool.Enqueue(gameObject);
 
-            // A component is always attached to a game object!
-            return gameObject.GetComponent<T>();
+            return gameObject;
         }
     }
 }

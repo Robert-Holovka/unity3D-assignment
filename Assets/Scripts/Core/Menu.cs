@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Assignment.Core.Game;
+using TMPro;
 using UnityEngine;
 
 namespace Assignment.Core

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1811068382503839722}
   - component: {fileID: 1811068382503839720}
   m_Layer: 0
-  m_Name: Bomb
+  m_Name: Grenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,8 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2e290d71db45834a8de9565875a35ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 50
-  radius: 1.5
+  explosive: {fileID: 11400000, guid: 7def8a5caebbb24468b4b9eae5b97bff, type: 2}
   color: {r: 1, g: 0.7258887, b: 0.0047169924, a: 1}
 --- !u!114 &1811068382503839722
 MonoBehaviour:
@@ -153,3 +152,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a60fc7a7cfe5b14585ab429cfd19b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startForce: {x: 0, y: 0, z: 50}

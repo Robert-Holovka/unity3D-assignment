@@ -3,6 +3,7 @@
     public interface IPoolableObject
     {
         void OnObjectActivation();
+        void OnObjectDeactivation();
     }
 }
 

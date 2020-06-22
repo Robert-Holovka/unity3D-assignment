@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using static Assignment.Core.GameState;
+using static Assignment.Core.Game.GameState;
 
-namespace Assignment.Core
+namespace Assignment.Core.Game
 {
     public class GameManager : MonoBehaviour
     {

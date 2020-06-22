@@ -6,12 +6,11 @@ namespace Assignment.Weapons
 {
     [RequireComponent(typeof(AreaDamage))]
     [RequireComponent(typeof(Timer))]
-    public class Bomb : MonoBehaviour, IPoolableObject
+    public class Grenade : MonoBehaviour, IPoolableObject
     {
         private LayerMask layerMask;
         private Timer timer;
 
-        #region UNITY METHODS
         private void Awake()
         {
             timer = GetComponent<Timer>();
@@ -28,11 +27,6 @@ namespace Assignment.Weapons
             timer.OnTimerFinish -= OnTimerFinished;
         }
 
-        void Start()
-        {
-            timer.StartTimer();
-        }
-
         private void OnCollisionEnter(Collision collision)
         {
             if (((1 << collision.gameObject.layer) & (1 << layerMask)) != 0)
@@ -40,7 +34,6 @@ namespace Assignment.Weapons
                 timer.EndEarly();
             }
         }
-        #endregion
 
         private void OnTimerFinished()
         {
@@ -51,7 +44,8 @@ namespace Assignment.Weapons
         {
             Detonate();
             // TODO: particle effect
-            Destroy(gameObject);
+
+            OnObjectDeactivation();
         }
 
         private void Detonate()
@@ -61,7 +55,22 @@ namespace Assignment.Weapons
 
         public void OnObjectActivation()
         {
-            throw new System.NotImplementedException();
+            if (timer == null)
+            {
+                timer = GetComponent<Timer>();
+            }
+            if (layerMask.value == 0)
+            {
+                layerMask = LayerMask.NameToLayer("Damageable");
+            }
+            timer.StartTimer();
+            //timer.OnTimerFinish += OnTimerFinished;
+        }
+
+        public void OnObjectDeactivation()
+        {
+            // timer.OnTimerFinish -= OnTimerFinished;
+            gameObject.SetActive(false);
         }
     }
 }

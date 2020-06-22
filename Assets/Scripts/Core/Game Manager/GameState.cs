@@ -1,4 +1,4 @@
-﻿namespace Assignment.Core
+﻿namespace Assignment.Core.Game
 {
     public enum GameState : byte
     {
