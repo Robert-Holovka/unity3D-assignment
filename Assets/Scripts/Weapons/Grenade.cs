@@ -1,7 +1,8 @@
 ﻿using Assignment.Core;
 using Assignment.Core.Pooling;
-using Assignment.Pickups;
 using Assignment.ScriptableObjects;
+using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Assignment.Weapons
@@ -13,6 +14,9 @@ namespace Assignment.Weapons
         [SerializeField] ItemStats ammoType;
         private LayerMask layerMask;
         private Timer timer;
+        private AudioSource explosionSFX;
+        private ParticleSystem explosionVFX;
+        private MeshRenderer meshRenderer;
 
         public ItemStats GetAmmoType()
         {
@@ -23,6 +27,14 @@ namespace Assignment.Weapons
         {
             timer = GetComponent<Timer>();
             layerMask = LayerMask.NameToLayer("Damageable");
+            explosionSFX = GetComponent<AudioSource>();
+            explosionVFX = GetComponentInChildren<ParticleSystem>();
+            meshRenderer = GetComponent<MeshRenderer>();
+        }
+
+        private void Start()
+        {
+            timer.StartTimer();
         }
 
         private void OnEnable()
@@ -78,6 +90,16 @@ namespace Assignment.Weapons
         public void OnObjectDeactivation()
         {
             // timer.OnTimerFinish -= OnTimerFinished;
+            meshRenderer.enabled = false;
+            explosionSFX.PlayOneShot(explosionSFX.clip);
+            explosionVFX.Play();
+
+            StartCoroutine(DeactivateObject(explosionSFX.clip.length));
+        }
+
+        private IEnumerator DeactivateObject(float time)
+        {
+            yield return new WaitForSeconds(time);
             gameObject.SetActive(false);
         }
     }
