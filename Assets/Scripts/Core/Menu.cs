@@ -14,11 +14,11 @@ namespace Assignment.Core
         private const string GAME_OVER_TEXT = "You died";
         private const string VICTORY_TEXT = "You are victorious";
 
-        private GameManager gameManager;
+        private ILevelManager levelManager;
 
-        private void Awake() => gameManager = FindObjectOfType<GameManager>();
-        private void OnEnable() => gameManager.OnGameStateChange += OnGameStateChanged;
-        private void OnDisable() => gameManager.OnGameStateChange -= OnGameStateChanged;
+        private void Awake() => levelManager = FindObjectOfType<GameManager>().GetComponent<ILevelManager>();
+        private void OnEnable() => levelManager.OnGameStateChange += OnGameStateChanged;
+        private void OnDisable() => levelManager.OnGameStateChange -= OnGameStateChanged;
 
         private void OnGameStateChanged(GameState gameState)
         {
@@ -37,6 +37,7 @@ namespace Assignment.Core
                     UpdateMenu(true, VICTORY_TEXT);
                     break;
                 case GameState.Running:
+                case GameState.Loading:
                 default:
                     UpdateMenu(false, GAME_TITLE);
                     break;
@@ -50,8 +51,8 @@ namespace Assignment.Core
             menuCanvas.enabled = enabled;
         }
 
-        public void OnLoadSceneButtonClicked() => gameManager.LoadScene();
+        public void OnLoadSceneButtonClicked() => levelManager.LoadLevel();
 
-        public void OnQuitButtonClicked() => Application.Quit();
+        public void OnQuitButtonClicked() => levelManager.LoadLevel();
     }
 }

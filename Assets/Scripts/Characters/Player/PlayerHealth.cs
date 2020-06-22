@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assignment.Core.Game;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,7 +39,7 @@ namespace Assignment.Characters.Player
 
         private void Die()
         {
-            throw new NotImplementedException();
+            FindObjectOfType<GameManager>().GetComponent<ILevelEventHandler>().OnPlayerDeath();
         }
 
         public void RestoreHealth(float healthPoints)

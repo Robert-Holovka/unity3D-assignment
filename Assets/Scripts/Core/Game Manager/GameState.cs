@@ -5,6 +5,7 @@
         Start,
         Paused,
         Running,
+        Loading,
         GameOver,
         Victory
     }

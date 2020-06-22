@@ -33,7 +33,6 @@ namespace Assignment.Characters.Enemy
 
             if (currentHealth <= lowHealthThreshold)
             {
-                // TODO: Find a better way
                 meshRenderer.material.color = baseStats.LowHealthColor;
             }
         }
