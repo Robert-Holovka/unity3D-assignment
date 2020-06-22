@@ -7,5 +7,6 @@ namespace Assignment.Scripts.Core.Pooling
         GameObject SpawnObject(GameObject prefab);
         GameObject SpawnObject(GameObject prefab, Vector3 position);
         GameObject SpawnObject(GameObject prefab, Vector3 position, Quaternion rotation);
+        void ReturnToPool(GameObject prefab);
     }
 }

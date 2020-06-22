@@ -9,10 +9,8 @@ namespace Assignment.Core
         [SerializeField] float duration = 1f;
         public event UnityAction OnTimerFinish;
 
-        public void StartTimer()
-        {
-            StartCoroutine(StartTimerCoroutine(duration));
-        }
+        public void SetDuration(float duration) => this.duration = duration;
+        public void StartTimer() => StartCoroutine(StartTimerCoroutine(duration));
 
         public void EndEarly()
         {
@@ -25,11 +23,6 @@ namespace Assignment.Core
             yield return new WaitForSeconds(duration);
 
             OnTimerFinish?.Invoke();
-        }
-
-        public void SetDuration(float duration)
-        {
-            this.duration = duration;
         }
     }
 }

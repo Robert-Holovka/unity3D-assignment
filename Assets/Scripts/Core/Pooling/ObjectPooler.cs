@@ -7,26 +7,91 @@ namespace Assignment.Core.Pooling
     [RequireComponent(typeof(IPoolableObjectEditorRestriction))]
     public class ObjectPooler : MonoBehaviour, IObjectPooler
     {
-
         [System.Serializable]
         public class Pool
         {
             public GameObject prefab;
             public int poolSize;
         }
+        public List<Pool> Pools;
 
-        public List<Pool> pools;
-        private Dictionary<string, Queue<GameObject>> poolDictionary;
+        private Dictionary<string, Queue<GameObject>> poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
-        private void Start()
+        private void Start() => InitPools();
+
+        #region Public Methods
+        public void ReturnToPool(GameObject prefab)
         {
-            poolDictionary = new Dictionary<string, Queue<GameObject>>();
-            FillPools();
+            if (!ContainsPool(prefab)) return;
+            if (!IsObjectPoolable(prefab)) return;
+
+            string poolTag = prefab.name;
+            Queue<GameObject> pool = poolDictionary[poolTag];
+
+            prefab.SetActive(false);
+            pool.Enqueue(prefab);
         }
 
-        private void FillPools()
+        public GameObject SpawnObject(GameObject prefab)
         {
-            foreach (Pool pool in pools)
+            return SpawnObject(prefab, Vector3.zero);
+        }
+
+        public GameObject SpawnObject(GameObject prefab, Vector3 position)
+        {
+            return SpawnObject(prefab, position, Quaternion.identity);
+        }
+
+        public GameObject SpawnObject(GameObject prefab, Vector3 position, Quaternion rotation)
+        {
+            if (!ContainsPool(prefab))
+            {
+                return null;
+            }
+            if (IsPoolEmpty(prefab))
+            {
+                return null;
+            }
+
+            string poolTag = prefab.name;
+            Queue<GameObject> pool = poolDictionary[poolTag];
+
+            GameObject gameObject = pool.Dequeue();
+            gameObject.transform.position = position;
+            gameObject.transform.rotation = rotation;
+            gameObject.SetActive(true);
+
+            return gameObject;
+        }
+        #endregion
+
+        #region Private Methods
+        private bool IsPoolEmpty(GameObject prefab)
+        {
+            string poolTag = prefab.name;
+            Queue<GameObject> pool = poolDictionary[poolTag];
+            if (pool.Count == 0)
+            {
+                Debug.LogError($"Pool for the type '{poolTag}' is empty.");
+                return true;
+            }
+            return false;
+        }
+
+        private bool ContainsPool(GameObject prefab)
+        {
+            string poolTag = prefab.name;
+            if (!poolDictionary.ContainsKey(poolTag))
+            {
+                Debug.LogError($"Pool for the type '{poolTag}' not found.");
+                return false;
+            }
+            return true;
+        }
+
+        private void InitPools()
+        {
+            foreach (Pool pool in Pools)
             {
                 if (pool.prefab == null)
                 {
@@ -42,7 +107,7 @@ namespace Assignment.Core.Pooling
             }
         }
 
-        private static Queue<GameObject> InstantiateObjects(Pool pool, GameObject parentInScene)
+        private Queue<GameObject> InstantiateObjects(Pool pool, GameObject parentInScene)
         {
             Queue<GameObject> pooledObjects = new Queue<GameObject>();
 
@@ -70,48 +135,7 @@ namespace Assignment.Core.Pooling
             return parentInScene;
         }
 
-        private static bool IsObjectPoolable(GameObject gameObject)
-        {
-            IPoolableObject poolableObject = gameObject.GetComponent<IPoolableObject>();
-            return poolableObject != null;
-        }
-
-        public GameObject SpawnObject(GameObject prefab)
-        {
-            return SpawnObject(prefab, Vector3.zero);
-        }
-
-        public GameObject SpawnObject(GameObject prefab, Vector3 position)
-        {
-            return SpawnObject(prefab, position, Quaternion.identity);
-        }
-
-        public GameObject SpawnObject(GameObject prefab, Vector3 position, Quaternion rotation)
-        {
-            string poolTag = prefab.name;
-            if (!poolDictionary.ContainsKey(poolTag))
-            {
-                Debug.LogError($"Pool for the type '{poolTag}' not found.");
-                return null;
-            }
-
-            Queue<GameObject> pool = poolDictionary[poolTag];
-            if (pool.Count == 0)
-            {
-                Debug.LogError($"Pool for the type '{poolTag}' is empty.\n Check field 'size' in the inspector.");
-                return null;
-            }
-
-            GameObject gameObject = pool.Dequeue();
-            gameObject.SetActive(false);
-
-            gameObject.transform.position = position;
-            gameObject.transform.rotation = rotation;
-            gameObject.SetActive(true);
-
-            pool.Enqueue(gameObject);
-
-            return gameObject;
-        }
+        private bool IsObjectPoolable(GameObject gameObject) => gameObject.GetComponent<IPoolableObject>() != null;
+        #endregion
     }
 }

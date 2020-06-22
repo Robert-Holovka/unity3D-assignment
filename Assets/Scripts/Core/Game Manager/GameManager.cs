@@ -1,6 +1,5 @@
 ﻿using Assignment.Characters.Enemy;
 using Assignment.ScriptableObjects;
-using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -13,9 +12,9 @@ namespace Assignment.Core.Game
 {
     public class GameManager : MonoBehaviour, ILevelManager, ILevelEventHandler
     {
-        [SerializeField] GameObject loadingCanvas;
-        [SerializeField] Slider loadingBar;
-        [SerializeField] Text loadingProgressText;
+        [SerializeField] GameObject loadingCanvas = default;
+        [SerializeField] Slider loadingBar = default;
+        [SerializeField] Text loadingProgressText = default;
 
         public event UnityAction<GameState> OnGameStateChange;
 
@@ -42,15 +41,10 @@ namespace Assignment.Core.Game
         #endregion
 
         #region Public Methods
-        public void LoadLevel()
-        {
-            StartCoroutine(LoadLevelAsync());
-        }
-
-        public void QuitApplication()
-        {
-            Application.Quit();
-        }
+        public void LoadLevel() => StartCoroutine(LoadLevelAsync());
+        public void QuitApplication() => Application.Quit();
+        public void OnPlayerDeath() => SetGameState(GameOver);
+        public string GetPickupGoalText() => $"{pickupsCollected}/{pickupsToCollect}";
 
         public void OnEnemyKilled()
         {
@@ -68,11 +62,6 @@ namespace Assignment.Core.Game
             }
             return false;
         }
-
-        public void OnPlayerDeath()
-        {
-            SetGameState(GameOver);
-        }
         #endregion
 
         #region Private Methods
@@ -81,7 +70,6 @@ namespace Assignment.Core.Game
             this.gameState = gameState;
             OnGameStateChange?.Invoke(gameState);
             Time.timeScale = (gameState == Running) ? 1f : 0f;
-
             loadingCanvas.SetActive(gameState == Loading);
         }
 
@@ -112,18 +100,17 @@ namespace Assignment.Core.Game
             SetGameState(Loading);
             AsyncOperation loading = SceneManager.LoadSceneAsync("Sandbox");
 
+            // 0.0 - 0.9 (Unity Loading)
             while (!loading.isDone)
             {
                 UpdateLoadingUI(loading.progress);
                 yield return null;
             }
-
+            // 0.9 - 1.0 (Unity Activation + custom loading)
             UpdateLoadingUI(0.95f);
             yield return null;
-
             OnLevelLoaded("Sandbox");
-
-            UpdateLoadingUI(1f);
+            UpdateLoadingUI(1.0f);
             yield return null;
 
             SetGameState(Running);
@@ -134,8 +121,6 @@ namespace Assignment.Core.Game
             loadingBar.value = progress;
             loadingProgressText.text = $"{Mathf.RoundToInt(progress * 100f)} %";
         }
-
-        public string GetPickupGoalText() => $"{pickupsCollected}/{pickupsToCollect}";
         #endregion
     }
 }

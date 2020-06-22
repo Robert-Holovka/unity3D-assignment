@@ -1,5 +1,4 @@
 ﻿using Assignment.Core.Game;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 

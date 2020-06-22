@@ -1,5 +1,4 @@
 ﻿using Assignment.Inventory.ItemSlot;
-using Assignment.Pickups;
 using Assignment.ScriptableObjects;
 using System.Collections.Generic;
 using UnityEngine;

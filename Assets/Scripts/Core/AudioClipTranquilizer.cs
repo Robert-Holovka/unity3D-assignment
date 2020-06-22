@@ -4,17 +4,14 @@ using UnityEngine;
 namespace Assets.Scripts.Core
 {
     [RequireComponent(typeof(AudioSource))]
-    public class AudioClipHandler : MonoBehaviour
+    public class AudioClipTranquilizer : MonoBehaviour
     {
         [Range(0, 1)]
         [SerializeField] float volumeTranquilizeRate = 0.25f;
 
         private AudioSource audioSource;
 
-        private void Awake()
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
+        private void Awake() => audioSource = GetComponent<AudioSource>();
 
         public void PlayAudio()
         {

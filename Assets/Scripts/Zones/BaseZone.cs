@@ -7,13 +7,13 @@ namespace Assignment.Zones
     public abstract class BaseZone : MonoBehaviour
     {
         protected ZoneTrigger zoneTrigger;
-        protected AudioClipHandler audioClipHandler;
+        protected AudioClipTranquilizer audioClipHandler;
 
         protected bool playerInZone = false;
 
         private void Awake()
         {
-            audioClipHandler = GetComponent<AudioClipHandler>();
+            audioClipHandler = GetComponent<AudioClipTranquilizer>();
             zoneTrigger = GetComponent<ZoneTrigger>();
         }
 

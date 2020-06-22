@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5326049084058778969}
-  - component: {fileID: 5326049084058778968}
-  - component: {fileID: 5326049084058778967}
+  - component: {fileID: 453736848259743069}
+  - component: {fileID: 7283373210169527536}
   m_Layer: 0
   m_Name: Object Pooler
   m_TagString: Untagged
@@ -32,19 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5326049084058778968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5326049084058778966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a7cebb714b1eb54bbefa34b9b979f39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5326049084058778967
+--- !u!114 &453736848259743069
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,7 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e53286ac14945b541ad545c314b40bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pools:
-  - prefab: {fileID: 1811068382503839715, guid: 3f37866d56a9ca940ac06c37b4e6d4f0,
-      type: 3}
-    poolSize: 10
+  Pools: []
+--- !u!114 &7283373210169527536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5326049084058778966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a7cebb714b1eb54bbefa34b9b979f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

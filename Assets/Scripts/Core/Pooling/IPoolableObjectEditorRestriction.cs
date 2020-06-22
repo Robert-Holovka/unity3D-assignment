@@ -3,10 +3,11 @@ using UnityEngine;
 
 namespace Assignment.Core.Pooling
 {
+    [RequireComponent(typeof(ObjectPooler))]
     [ExecuteAlways]
     public class IPoolableObjectEditorRestriction : MonoBehaviour
     {
-        ObjectPooler objectPooler;
+        private ObjectPooler objectPooler;
 
 #if UNITY_EDITOR
         private void Update()
@@ -16,7 +17,7 @@ namespace Assignment.Core.Pooling
                 objectPooler = FindObjectOfType<ObjectPooler>();
             }
 
-            List<ObjectPooler.Pool> pools = objectPooler.pools;
+            List<ObjectPooler.Pool> pools = objectPooler.Pools;
             if (pools == null || pools.Count == 0) return;
 
             pools.ForEach((pool) =>

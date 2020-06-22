@@ -44,7 +44,7 @@ namespace Assignment.Core
             }
         }
 
-        private void UpdateMenu(bool enabled, string title, string loadSceneBtnText = "Restart")
+        private void UpdateMenu(bool enabled, string title, string loadSceneBtnText = "RESTART")
         {
             titleText.text = title;
             this.loadSceneBtnText.text = loadSceneBtnText;
@@ -52,7 +52,6 @@ namespace Assignment.Core
         }
 
         public void OnLoadSceneButtonClicked() => levelManager.LoadLevel();
-
         public void OnQuitButtonClicked() => levelManager.QuitApplication();
     }
 }
