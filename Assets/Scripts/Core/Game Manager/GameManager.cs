@@ -2,6 +2,8 @@
 using Assignment.ScriptableObjects;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -21,9 +23,9 @@ namespace Assignment.Core.Game
         private GameState gameState;
 
         // Level goals
-        private int enemiesKilledGoal;
+        private int enemiesToKill;
         private int enemiesKilled;
-        private int pickupsCollectedGoal;
+        private int pickupsToCollect;
         private int pickupsCollected;
 
         #region Unity Methods
@@ -43,7 +45,6 @@ namespace Assignment.Core.Game
         #region Public Methods
         public void LoadLevel()
         {
-            SetGameState(Loading);
             StartCoroutine(LoadLevelAsync());
         }
 
@@ -80,17 +81,21 @@ namespace Assignment.Core.Game
             loadingCanvas.SetActive(gameState == Loading);
         }
 
-        private void OnLevelLoaded()
+        private void OnLevelLoaded(string levelName)
         {
+            LevelGoal levelGoal = Resources.Load<LevelGoal>(levelName);
+
             enemiesKilled = 0;
             pickupsCollected = 0;
-            enemiesKilledGoal = FindObjectsOfType<EnemyHealth>().Length;
-            pickupsCollectedGoal = FindObjectsOfType<Pickup>().Length;
+
+            enemiesToKill = FindObjectsOfType<EnemyHealth>().Length;
+            Pickup[] pickups = FindObjectsOfType<Pickup>();
+            pickupsToCollect = pickups.Where(p => levelGoal.ContainsType(p.ItemInfo)).Count();
         }
 
         private void CheckForVictory()
         {
-            if (enemiesKilled == enemiesKilledGoal && pickupsCollected == pickupsCollectedGoal)
+            if (enemiesKilled == enemiesToKill && pickupsCollected == pickupsToCollect)
             {
                 SetGameState(Victory);
             }
@@ -98,6 +103,7 @@ namespace Assignment.Core.Game
 
         private IEnumerator LoadLevelAsync()
         {
+            SetGameState(Loading);
             AsyncOperation loading = SceneManager.LoadSceneAsync("Sandbox");
 
             while (!loading.isDone)
@@ -108,10 +114,12 @@ namespace Assignment.Core.Game
 
             UpdateLoadingUI(0.95f);
             yield return null;
+
+            OnLevelLoaded("Sandbox");
+
             UpdateLoadingUI(1f);
             yield return null;
 
-            OnLevelLoaded();
             SetGameState(Running);
         }
 
