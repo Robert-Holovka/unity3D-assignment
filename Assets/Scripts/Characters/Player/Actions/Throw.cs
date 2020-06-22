@@ -13,12 +13,12 @@ namespace Assignment.Characters.Player.Actions
         [Range(0, 1)]
         [SerializeField] float viewPortY = 0.4f;
         [SerializeField]
-        Camera playerCamera;
+        Camera playerCamera = default;
         private const float viewPortX = 0.5f;
         [SerializeField] Vector3 throwForce = Vector3.zero;
-        [SerializeField] GameObject[] throwableObjects;
-        [SerializeField] Text ammoAmountText;
-        [SerializeField] InventorySystem inventorySystem;
+        [SerializeField] GameObject[] throwableObjects = default;
+        [SerializeField] Text ammoAmountText = default;
+        [SerializeField] InventorySystem inventorySystem = default;
 
         private IObjectPooler objectPooler;
         private GameObject selectedThrowable;

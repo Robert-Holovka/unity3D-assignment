@@ -5,7 +5,7 @@ namespace Assignment.ScriptableObjects
     [CreateAssetMenu(fileName = "New Level Info", menuName = "Level Info", order = 1)]
     public class LevelGoal : ScriptableObject
     {
-        [SerializeField] ItemStats[] itemsToPick;
+        [SerializeField] ItemStats[] itemsToPick = default;
 
         public ItemStats[] ItemsToPick
         {

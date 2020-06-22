@@ -10,7 +10,7 @@ namespace Assignment.Weapons
     [RequireComponent(typeof(Timer))]
     public class Grenade : MonoBehaviour, IPoolableObject
     {
-        [SerializeField] ItemStats ammoType;
+        [SerializeField] ItemStats ammoType = default;
         private LayerMask layerMask;
         private Timer timer;
         private AudioSource explosionSFX;

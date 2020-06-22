@@ -8,11 +8,11 @@ namespace Assignment.Inventory.ItemSlot
 {
     public class Slot : MonoBehaviour, ISlot, IPointerClickHandler
     {
-        [SerializeField] Image itemImage;
+        [SerializeField] Image itemImage = default;
         [Header("Stack Size Text")]
-        [SerializeField] Text stackText;
-        [SerializeField] Color defaultTextColor;
-        [SerializeField] Color slotFullTextColor;
+        [SerializeField] Text stackText = default;
+        [SerializeField] Color defaultTextColor = Color.white;
+        [SerializeField] Color slotFullTextColor = Color.red;
 
         public event UnityAction<ISlot> OnStackSplit;
         public byte SlotID { get; set; }

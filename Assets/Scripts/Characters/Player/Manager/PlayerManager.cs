@@ -9,7 +9,7 @@ namespace Assignment.Characters.Player.Manager
     {
         [SerializeField] Canvas playerCanvas = default;
         [SerializeField] GameObject inventoryPanel = default;
-        [SerializeField] Text pickupGoalText;
+        [SerializeField] Text pickupGoalText = default;
 
         public bool InInventory { get; private set; } = false;
 

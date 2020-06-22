@@ -5,7 +5,7 @@ namespace Assignment.Characters.Enemy
 {
     public class EnemyHealth : MonoBehaviour, IDamageable
     {
-        [SerializeField] EnemyStats baseStats;
+        [SerializeField] EnemyStats baseStats = default;
 
         private MeshRenderer meshRenderer;
         private float currentHealth;

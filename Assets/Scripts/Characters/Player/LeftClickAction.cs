@@ -6,7 +6,7 @@ namespace Assignment.Characters.Player
 {
     public class LeftClickAction : MonoBehaviour
     {
-        [SerializeField] PlayerAction[] actions;
+        [SerializeField] PlayerAction[] actions = default;
 
         private PlayerAction selectedAction;
         private bool canStart = true;
