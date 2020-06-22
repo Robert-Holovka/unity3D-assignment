@@ -33,6 +33,7 @@ namespace Assignment.Characters.Player.Manager
         {
             Cursor.visible = false;
             pickupGoalText.text = levelEventHandler.GetPickupGoalText();
+            UpdatePlayerState(false);
         }
 
         private void OnEnable() => levelEventHandler.OnGameStateChange += OnGameStateChanged;
@@ -43,15 +44,19 @@ namespace Assignment.Characters.Player.Manager
             if (Input.GetKeyDown(KeyCode.Tab) && isGameRunning)
             {
                 InInventory = !InInventory;
-
-                inventoryPanel.SetActive(InInventory);
-                Cursor.visible = InInventory;
-
-                playerMovement.enabled = !InInventory;
-                playerCameraRotation.enabled = !InInventory;
-                playerInteraction.enabled = !InInventory;
-                leftClickAction.enabled = !InInventory;
+                UpdatePlayerState(InInventory);
             }
+        }
+
+        private void UpdatePlayerState(bool inInventory)
+        {
+            inventoryPanel.SetActive(inInventory);
+            Cursor.visible = inInventory;
+
+            playerMovement.enabled = !inInventory;
+            playerCameraRotation.enabled = !inInventory;
+            playerInteraction.enabled = !inInventory;
+            leftClickAction.enabled = !inInventory;
         }
 
         public void OnEnemyKilled() => levelEventHandler.OnEnemyKilled();
@@ -62,7 +67,6 @@ namespace Assignment.Characters.Player.Manager
                 pickupGoalText.text = levelEventHandler.GetPickupGoalText();
             }
         }
-
 
         public void OnGameStateChanged(GameState gameState)
         {

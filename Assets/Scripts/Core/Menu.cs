@@ -1,14 +1,14 @@
 ﻿using Assignment.Core.Game;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assignment.Core
 {
     public class Menu : MonoBehaviour
     {
         [SerializeField] Canvas menuCanvas = default;
-        [SerializeField] TextMeshProUGUI titleTMP = default;
-        [SerializeField] TextMeshProUGUI loadSceneBtnTMP = default;
+        [SerializeField] Text titleText = default;
+        [SerializeField] Text loadSceneBtnText = default;
 
         private const string GAME_TITLE = "ASSIGNMENT";
         private const string GAME_OVER_TEXT = "You died";
@@ -46,13 +46,13 @@ namespace Assignment.Core
 
         private void UpdateMenu(bool enabled, string title, string loadSceneBtnText = "Restart")
         {
-            titleTMP.text = title;
-            loadSceneBtnTMP.text = loadSceneBtnText;
+            titleText.text = title;
+            this.loadSceneBtnText.text = loadSceneBtnText;
             menuCanvas.enabled = enabled;
         }
 
         public void OnLoadSceneButtonClicked() => levelManager.LoadLevel();
 
-        public void OnQuitButtonClicked() => levelManager.LoadLevel();
+        public void OnQuitButtonClicked() => levelManager.QuitApplication();
     }
 }
