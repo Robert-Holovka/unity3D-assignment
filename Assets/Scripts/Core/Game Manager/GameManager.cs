@@ -2,7 +2,6 @@
 using Assignment.ScriptableObjects;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -21,12 +20,12 @@ namespace Assignment.Core.Game
         public event UnityAction<GameState> OnGameStateChange;
 
         private GameState gameState;
-
         // Level goals
         private int enemiesToKill;
         private int enemiesKilled;
         private int pickupsToCollect;
         private int pickupsCollected;
+        private LevelGoal levelGoal;
 
         #region Unity Methods
         private void Start() => SetGameState(GameState.Start);
@@ -59,10 +58,15 @@ namespace Assignment.Core.Game
             CheckForVictory();
         }
 
-        public void OnPickupCollected(ItemStats itemStats)
+        public bool OnPickupCollected(ItemStats itemStats, int amount)
         {
-            pickupsCollected++;
-            CheckForVictory();
+            if (levelGoal.ContainsType(itemStats))
+            {
+                pickupsCollected += amount;
+                CheckForVictory();
+                return true;
+            }
+            return false;
         }
 
         public void OnPlayerDeath()
@@ -83,14 +87,16 @@ namespace Assignment.Core.Game
 
         private void OnLevelLoaded(string levelName)
         {
-            LevelGoal levelGoal = Resources.Load<LevelGoal>(levelName);
+            levelGoal = Resources.Load<LevelGoal>(levelName);
 
             enemiesKilled = 0;
             pickupsCollected = 0;
 
             enemiesToKill = FindObjectsOfType<EnemyHealth>().Length;
             Pickup[] pickups = FindObjectsOfType<Pickup>();
-            pickupsToCollect = pickups.Where(p => levelGoal.ContainsType(p.ItemInfo)).Count();
+            pickupsToCollect = pickups
+                .Where(p => levelGoal.ContainsType(p.ItemInfo))
+                .Sum(p => p.Amount);
         }
 
         private void CheckForVictory()
@@ -128,6 +134,8 @@ namespace Assignment.Core.Game
             loadingBar.value = progress;
             loadingProgressText.text = $"{Mathf.RoundToInt(progress * 100f)} %";
         }
+
+        public string GetPickupGoalText() => $"{pickupsCollected}/{pickupsToCollect}";
         #endregion
     }
 }

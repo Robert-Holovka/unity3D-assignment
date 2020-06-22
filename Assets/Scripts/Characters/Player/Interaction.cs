@@ -1,4 +1,5 @@
-﻿using Assignment.Inventory;
+﻿using Assignment.Characters.Player.Manager;
+using Assignment.Inventory;
 using Assignment.Pickups;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,14 +15,16 @@ namespace Assignment.Characters.Player
         private readonly Vector3 cameraCenter = new Vector3(0.5f, 0.5f);
 
         private IInventorySystem inventorySystem;
+        private IPlayerManager playerManager;
         private new Camera camera;
         private Text tooltipText;
 
         private void Awake()
         {
             camera = GetComponentInChildren<Camera>();
+            inventorySystem = GetComponentInChildren<InventorySystem>();
             tooltipText = tooltipPanel.GetComponentInChildren<Text>();
-            inventorySystem = GetComponentInChildren<IInventorySystem>();
+            playerManager = GetComponent<IPlayerManager>();
         }
 
         private void Start()
@@ -46,6 +49,7 @@ namespace Assignment.Characters.Player
 
             if (itemPicked)
             {
+                playerManager.OnPickupCollected(pickup.ItemInfo, pickup.Amount);
                 pickup.OnItemPicked();
             }
             else
@@ -56,6 +60,8 @@ namespace Assignment.Characters.Player
 
         private void UpdateTooltipUI(bool active, IPickupableItem pickup)
         {
+            if (playerManager.InInventory) return;
+
             tooltipPanel.SetActive(active);
             if (active)
             {

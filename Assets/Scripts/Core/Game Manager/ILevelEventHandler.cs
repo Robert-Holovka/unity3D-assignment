@@ -4,8 +4,9 @@ namespace Assignment.Core.Game
 {
     public interface ILevelEventHandler : IGameStateManager
     {
+        string GetPickupGoalText();
         void OnEnemyKilled();
-        void OnPickupCollected(ItemStats itemStats);
+        bool OnPickupCollected(ItemStats itemStats, int amount);
         void OnPlayerDeath();
     }
 }
