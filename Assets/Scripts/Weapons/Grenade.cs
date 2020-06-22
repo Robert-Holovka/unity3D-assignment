@@ -1,5 +1,7 @@
 ﻿using Assignment.Core;
 using Assignment.Core.Pooling;
+using Assignment.Pickups;
+using Assignment.ScriptableObjects;
 using UnityEngine;
 
 namespace Assignment.Weapons
@@ -8,8 +10,14 @@ namespace Assignment.Weapons
     [RequireComponent(typeof(Timer))]
     public class Grenade : MonoBehaviour, IPoolableObject
     {
+        [SerializeField] ItemStats ammoType;
         private LayerMask layerMask;
         private Timer timer;
+
+        public ItemStats GetAmmoType()
+        {
+            return ammoType;
+        }
 
         private void Awake()
         {

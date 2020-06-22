@@ -6,7 +6,7 @@ namespace Assignment.Weapons
 {
     public class AreaDamage : MonoBehaviour
     {
-        [SerializeField] ExplosiveStats explosive;
+        [SerializeField] ExplosiveStats explosive = default;
         [SerializeField] Color color = Color.red;
 
         public void DealDamage()

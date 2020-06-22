@@ -152,4 +152,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a60fc7a7cfe5b14585ab429cfd19b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startForce: {x: 0, y: 0, z: 50}
+  ammoType: {fileID: 11400000, guid: f4be24816519fd94999c23f0e564cad7, type: 2}

@@ -33,16 +33,16 @@ namespace Assignment.Inventory
         }
         #endregion
 
-        public bool AddItem(IPickupableItem pickup)
+        public bool AddItem(ItemStats item, int amount)
         {
-            int amount = pickup.Amount;
             bool success = false;
 
+            int newAmount = amount;
             // Can I store new pickup?
             for (int i = 0, n = slots.Count; i < n; i++)
             {
-                amount -= slots[i].HowManyCanIStore(pickup.ItemInfo);
-                if (amount <= 0)
+                newAmount -= slots[i].HowManyCanIStore(item);
+                if (newAmount <= 0)
                 {
                     success = true;
                     break;
@@ -52,11 +52,11 @@ namespace Assignment.Inventory
             if (!success) return false;
 
             // Add item
-            amount = pickup.Amount;
+            newAmount = amount;
             for (int i = 0, n = slots.Count; i < n; i++)
             {
-                amount -= slots[i].AddStackPortion(pickup.ItemInfo, amount);
-                if (amount == 0) break;
+                newAmount -= slots[i].AddStackPortion(item, newAmount);
+                if (newAmount == 0) break;
             }
             return success;
         }
@@ -165,6 +165,32 @@ namespace Assignment.Inventory
                 slot.RemoveStackPortion(itemsToMoveNum);
                 emptySlot.AddAll(slot.StoredItem, itemsToMoveNum);
             }
+        }
+
+        public int ItemCount(ItemStats item)
+        {
+            int count = 0;
+            for (int i = 0, n = slots.Count; i < n; i++)
+            {
+                if (slots[i].IsEmpty) continue;
+                if (slots[i].StoredItem.Type != item.Type) continue;
+                count += slots[i].SlotCount;
+            }
+
+            return count;
+        }
+
+        public bool RemoveItem(ItemStats item)
+        {
+            for (int i = 0, n = slots.Count; i < n; i++)
+            {
+                if (slots[i].IsEmpty) continue;
+                if (slots[i].StoredItem.Type != item.Type) continue;
+                slots[i].RemoveStackPortion(1);
+                return true;
+            }
+
+            return false;
         }
     }
 }

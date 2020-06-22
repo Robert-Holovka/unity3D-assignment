@@ -1,7 +1,10 @@
 ﻿using Assignment.Core.Pooling;
+using Assignment.Inventory;
 using Assignment.Scripts.Core.Pooling;
+using Assignment.Weapons;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assignment.Characters.Player.Actions
 {
@@ -14,6 +17,8 @@ namespace Assignment.Characters.Player.Actions
         private const float viewPortX = 0.5f;
         [SerializeField] Vector3 throwForce = Vector3.zero;
         [SerializeField] GameObject[] throwableObjects;
+        [SerializeField] Text ammoAmountText;
+        [SerializeField] InventorySystem inventorySystem;
 
         private IObjectPooler objectPooler;
         private GameObject selectedThrowable;
@@ -26,6 +31,13 @@ namespace Assignment.Characters.Player.Actions
         private void Start()
         {
             selectedThrowable = throwableObjects[0];
+            UpdateAmmoText();
+        }
+
+        private void UpdateAmmoText()
+        {
+            int ammoInInventory = inventorySystem.ItemCount(selectedThrowable.GetComponent<Grenade>().GetAmmoType());
+            ammoAmountText.text = $"AMMO: {ammoInInventory}";
         }
 
         public override IEnumerator StartAction()
@@ -33,6 +45,7 @@ namespace Assignment.Characters.Player.Actions
             GameObject throwable = objectPooler.SpawnObject(selectedThrowable, playerCamera.transform.position, playerCamera.transform.rotation);
             throwable.GetComponent<Rigidbody>().AddRelativeForce(throwForce);
             throwable.GetComponent<IPoolableObject>().OnObjectActivation();
+            inventorySystem.RemoveItem(selectedThrowable.GetComponent<Grenade>().GetAmmoType());
             yield return new WaitForSeconds(actionStats.ActionFrequency);
         }
     }

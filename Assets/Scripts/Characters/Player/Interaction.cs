@@ -42,7 +42,7 @@ namespace Assignment.Characters.Player
 
         private void PickItem(IPickupableItem pickup)
         {
-            bool itemPicked = inventorySystem.AddItem(pickup);
+            bool itemPicked = inventorySystem.AddItem(pickup.ItemInfo, pickup.Amount);
 
             if (itemPicked)
             {
