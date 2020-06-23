@@ -10,10 +10,10 @@ using static Assignment.Core.Game.GameState;
 
 namespace Assignment.Core.Game
 {
-    public class GameManager : MonoBehaviour, ILevelManager, ILevelEventHandler
+    public class GameManager : MonoBehaviour, ILevelLoader, ILevelEventHandler
     {
         [Tooltip("For easier testing")]
-        [SerializeField] GameState startState;
+        [SerializeField] GameState startState = GameState.Start;
         [Header("UI")]
         [SerializeField] GameObject loadingCanvas = default;
         [SerializeField] Slider loadingBar = default;

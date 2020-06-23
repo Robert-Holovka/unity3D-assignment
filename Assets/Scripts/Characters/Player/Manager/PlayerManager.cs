@@ -14,8 +14,6 @@ namespace Assignment.Characters.Player.Manager
         public bool InInventory { get; private set; } = false;
 
         private ILevelEventHandler levelEventHandler;
-        private Movement playerMovement;
-        private PlayerCamera playerCameraRotation;
         private Interaction playerInteraction;
         private LeftClickAction leftClickAction;
         private bool isGameRunning = true;
@@ -23,8 +21,6 @@ namespace Assignment.Characters.Player.Manager
         private void Awake()
         {
             levelEventHandler = FindObjectOfType<GameManager>().GetComponent<ILevelEventHandler>();
-            playerMovement = GetComponent<Movement>();
-            playerCameraRotation = GetComponent<PlayerCamera>();
             playerInteraction = GetComponent<Interaction>();
             leftClickAction = GetComponent<LeftClickAction>();
         }
@@ -53,8 +49,6 @@ namespace Assignment.Characters.Player.Manager
             inventoryPanel.SetActive(inInventory);
             Cursor.visible = inInventory;
 
-            playerMovement.enabled = !inInventory;
-            playerCameraRotation.enabled = !inInventory;
             playerInteraction.enabled = !inInventory;
             leftClickAction.enabled = !inInventory;
         }

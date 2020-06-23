@@ -1278,7 +1278,7 @@ PrefabInstance:
     - target: {fileID: 6198147058916301406, guid: 5a9d63bd4060983499d4e889398dbbee,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.97
+      value: 1.22
       objectReference: {fileID: 0}
     - target: {fileID: 6198147058916301406, guid: 5a9d63bd4060983499d4e889398dbbee,
         type: 3}
@@ -4258,7 +4258,7 @@ PrefabInstance:
     - target: {fileID: 453736848259743069, guid: abe279980f02eec41a4c974bddfec311,
         type: 3}
       propertyPath: Pools.Array.data[0].poolSize
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 453736848259743069, guid: abe279980f02eec41a4c974bddfec311,
         type: 3}

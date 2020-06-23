@@ -1,6 +1,6 @@
 ﻿namespace Assignment.Core.Game
 {
-    public interface ILevelManager : IGameStateManager
+    public interface ILevelLoader : IGameStateManager
     {
         void LoadLevel();
         void QuitApplication();

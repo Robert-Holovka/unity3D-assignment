@@ -9,9 +9,5 @@ public class Pickup : MonoBehaviour, IPickupableItem
 
     public ItemStats ItemInfo { get => pickupInfo; }
     public int Amount { get => amount; set => amount = value; }
-
-    public void OnItemPicked()
-    {
-        Destroy(gameObject);
-    }
+    public void OnItemPicked() => Destroy(gameObject);
 }

@@ -14,9 +14,9 @@ namespace Assignment.Core
         private const string GAME_OVER_TEXT = "You died";
         private const string VICTORY_TEXT = "You are victorious";
 
-        private ILevelManager levelManager;
+        private ILevelLoader levelManager;
 
-        private void Awake() => levelManager = FindObjectOfType<GameManager>().GetComponent<ILevelManager>();
+        private void Awake() => levelManager = FindObjectOfType<GameManager>().GetComponent<ILevelLoader>();
         private void OnEnable() => levelManager.OnGameStateChange += OnGameStateChanged;
         private void OnDisable() => levelManager.OnGameStateChange -= OnGameStateChanged;
 
