@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 876896693}
   - component: {fileID: 876896692}
   - component: {fileID: 4427024382350341268}
-  - component: {fileID: 161352439054541457}
   m_Layer: 0
   m_Name: Item Image
   m_TagString: Untagged
@@ -88,18 +87,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eee61eee02868204a87c5e20d6f635a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!225 &161352439054541457
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 876896690}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &1161535841
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +152,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 2039d44f412bae146bc9ab05b931aa5e, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 35
     m_FontStyle: 1
     m_BestFit: 0

@@ -32,51 +32,60 @@ namespace Assignment.Inventory
         }
         #endregion
 
-        public bool AddItem(ItemStats item, int amount)
+        #region Public Methods
+        public bool AddItem(ItemStats item, int initialAmount)
         {
-            bool success = false;
-
-            int newAmount = amount;
+            bool canStore = false;
+            int amount = initialAmount;
             // Can I store new pickup?
             for (int i = 0, n = slots.Count; i < n; i++)
             {
-                newAmount -= slots[i].HowManyCanIStore(item);
-                if (newAmount <= 0)
+                amount -= slots[i].SpaceLeft(item);
+                if (amount <= 0)
                 {
-                    success = true;
+                    canStore = true;
                     break;
                 }
             }
 
-            if (!success) return false;
+            if (!canStore) return false;
 
             // Add item
-            newAmount = amount;
+            amount = initialAmount;
             for (int i = 0, n = slots.Count; i < n; i++)
             {
-                newAmount -= slots[i].AddStackPortion(item, newAmount);
-                if (newAmount == 0) break;
+                amount -= slots[i].AddStackPortion(item, amount);
+                if (amount == 0) break;
             }
-            return success;
+            return canStore;
         }
 
-        private void GenerateSlots()
+        public int ItemCount(ItemStats item)
         {
-            UnityEngine.Object itemSlotPrefab = Resources.Load("Item Slot");
-
-            for (int i = 0; i < numberOfSlots; i++)
+            int count = 0;
+            for (int i = 0, n = slots.Count; i < n; i++)
             {
-                GameObject itemSlot = Instantiate(itemSlotPrefab) as GameObject;
-
-                itemSlot.transform.name = $"Item Slot {i + 1}";
-                itemSlot.transform.SetParent(transform, false);
-                ISlot slot = itemSlot.GetComponent<ISlot>();
-                slot.SlotID = (byte)i;
-
-                slots.Add(slot);
+                if (slots[i].IsEmpty) continue;
+                if (slots[i].StoredItem.Type != item.Type) continue;
+                count += slots[i].SlotCount;
             }
+            return count;
         }
 
+        public bool RemoveItem(ItemStats item)
+        {
+            for (int i = 0, n = slots.Count; i < n; i++)
+            {
+                if (slots[i].IsEmpty) continue;
+                if (slots[i].StoredItem.Type != item.Type) continue;
+                slots[i].RemoveStackPortion(1);
+                return true;
+            }
+            return false;
+        }
+        #endregion
+
+        #region Private Methods
         private void OnItemDropped(ISlot from, List<GameObject> objectsHit)
         {
             // Outside inventory
@@ -103,16 +112,43 @@ namespace Assignment.Inventory
             from.DropAll();
         }
 
+        private void OnStackSplitted(ISlot slot)
+        {
+            ISlot emptySlot = slots.Find(s => s.IsEmpty);
+            if (emptySlot != null)
+            {
+                int itemsToMoveNum = slot.SlotCount - slot.SlotCount / 2;
+                slot.RemoveStackPortion(itemsToMoveNum);
+                emptySlot.AddAll(slot.StoredItem, itemsToMoveNum);
+            }
+        }
+
+        private void GenerateSlots()
+        {
+            Object itemSlotPrefab = Resources.Load("Item Slot");
+
+            for (int i = 0; i < numberOfSlots; i++)
+            {
+                GameObject itemSlot = Instantiate(itemSlotPrefab) as GameObject;
+
+                itemSlot.transform.name = $"Item Slot {i + 1}";
+                itemSlot.transform.SetParent(transform, false);
+                ISlot slot = itemSlot.GetComponent<ISlot>();
+                slot.SlotID = (byte)i;
+
+                slots.Add(slot);
+            }
+        }
+
         private void MoveItem(ISlot fromSlot, ISlot toSlot)
         {
-            // Item dropped on the initial slot
             if (fromSlot.SlotID == toSlot.SlotID) return;
 
             if (toSlot.IsEmpty)
             {
                 MoveToEmptySlot(fromSlot, toSlot);
             }
-            else if (toSlot.StoredItem.Type != fromSlot.StoredItem.Type)
+            else if (fromSlot.StoredItem.Type != toSlot.StoredItem.Type)
             {
                 SwapSlots(fromSlot, toSlot);
             }
@@ -124,16 +160,12 @@ namespace Assignment.Inventory
 
         private void MergeSlots(ISlot fromSlot, ISlot toSlot)
         {
-            if (fromSlot.HowManyCanIStore(fromSlot.StoredItem) == 0
-                && toSlot.HowManyCanIStore(toSlot.StoredItem) == 0)
-            {
-                return;
-            }
+            if (toSlot.SpaceLeft(toSlot.StoredItem) == 0) return;
 
-            int canMergeNum = toSlot.HowManyCanIStore(fromSlot.StoredItem);
-            canMergeNum = (canMergeNum >= fromSlot.SlotCount) ? fromSlot.SlotCount : canMergeNum;
+            int toSlotSpaceLeft = toSlot.SpaceLeft(toSlot.StoredItem);
+            int canMergeNum = (toSlotSpaceLeft >= fromSlot.SlotCount) ? fromSlot.SlotCount : toSlotSpaceLeft;
             fromSlot.RemoveStackPortion(canMergeNum);
-            toSlot.AddStackPortion(fromSlot.StoredItem, canMergeNum);
+            toSlot.AddStackPortion(toSlot.StoredItem, canMergeNum);
         }
 
         private void MoveToEmptySlot(ISlot fromSlot, ISlot toSlot)
@@ -154,42 +186,6 @@ namespace Assignment.Inventory
             toSlot.DropAll();
             toSlot.AddAll(item1, amount1);
         }
-
-        private void OnStackSplitted(ISlot slot)
-        {
-            ISlot emptySlot = slots.Find(s => s.IsEmpty);
-            if (emptySlot != null)
-            {
-                int itemsToMoveNum = slot.SlotCount - slot.SlotCount / 2;
-                slot.RemoveStackPortion(itemsToMoveNum);
-                emptySlot.AddAll(slot.StoredItem, itemsToMoveNum);
-            }
-        }
-
-        public int ItemCount(ItemStats item)
-        {
-            int count = 0;
-            for (int i = 0, n = slots.Count; i < n; i++)
-            {
-                if (slots[i].IsEmpty) continue;
-                if (slots[i].StoredItem.Type != item.Type) continue;
-                count += slots[i].SlotCount;
-            }
-
-            return count;
-        }
-
-        public bool RemoveItem(ItemStats item)
-        {
-            for (int i = 0, n = slots.Count; i < n; i++)
-            {
-                if (slots[i].IsEmpty) continue;
-                if (slots[i].StoredItem.Type != item.Type) continue;
-                slots[i].RemoveStackPortion(1);
-                return true;
-            }
-
-            return false;
-        }
+        #endregion
     }
 }

@@ -15,26 +15,16 @@ namespace Assignment.Inventory.ItemSlot
         [SerializeField] Color slotFullTextColor = Color.red;
 
         public event UnityAction<ISlot> OnStackSplit;
-        public byte SlotID { get; set; }
-        public bool IsEmpty => StoredItem == null;
-        public int SlotCount { get; private set; }
         public IIconHandler MyIconHandler { get; private set; }
         public ItemStats StoredItem { get; private set; }
+        public byte SlotID { get; set; }
+        public int SlotCount { get; private set; }
+        public bool IsEmpty => SlotCount == 0;
 
-        #region UNITY METHODS
-        private void Awake()
-        {
-            MyIconHandler = GetComponentInChildren<IIconHandler>();
-        }
-
-        private void Start()
-        {
-            DropAll();
-        }
-        #endregion
+        private void Awake() => MyIconHandler = GetComponentInChildren<IIconHandler>();
+        private void Start() => DropAll();
 
         #region PUBLIC METHODS
-
         public void DropAll()
         {
             SlotCount = 0;
@@ -52,7 +42,7 @@ namespace Assignment.Inventory.ItemSlot
         public int AddStackPortion(ItemStats newItem, int amount)
         {
             int storedNum = 0;
-            int canStoreNum = HowManyCanIStore(newItem);
+            int canStoreNum = SpaceLeft(newItem);
             if (canStoreNum > 0)
             {
                 storedNum = (amount >= canStoreNum) ? canStoreNum : amount;
@@ -100,12 +90,24 @@ namespace Assignment.Inventory.ItemSlot
             return true;
         }
 
-        public int HowManyCanIStore(ItemStats newItem)
+        public int SpaceLeft(ItemStats newItem)
         {
             if (IsEmpty) return newItem.MaxStack;
             if (StoredItem.Type != newItem.Type) return 0;
             int n = StoredItem.MaxStack - SlotCount;
             return (n > 0) ? n : 0;
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (eventData.button == PointerEventData.InputButton.Right
+                && Input.GetKey(KeyCode.LeftShift))
+            {
+                if (SlotCount > 1)
+                {
+                    OnStackSplit?.Invoke(this);
+                }
+            }
         }
         #endregion
 
@@ -130,18 +132,6 @@ namespace Assignment.Inventory.ItemSlot
             if (StoredItem == null) return true;
             if (newItem.Type != StoredItem.Type) return false;
             return (SlotCount + amount) <= StoredItem.MaxStack;
-        }
-
-        public void OnPointerClick(PointerEventData eventData)
-        {
-            if (eventData.button == PointerEventData.InputButton.Right
-                && Input.GetKey(KeyCode.LeftShift))
-            {
-                if (SlotCount > 1)
-                {
-                    OnStackSplit?.Invoke(this);
-                }
-            }
         }
         #endregion
     }
