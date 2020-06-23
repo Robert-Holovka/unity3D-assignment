@@ -1,4 +1,5 @@
-﻿using Assignment.ScriptableObjects;
+﻿using Assignment.Characters.Player.Manager;
+using Assignment.ScriptableObjects;
 using UnityEngine;
 
 namespace Assignment.Characters.Enemy
@@ -11,10 +12,7 @@ namespace Assignment.Characters.Enemy
         private float currentHealth;
         private float lowHealthThreshold;
 
-        private void Awake()
-        {
-            meshRenderer = GetComponent<MeshRenderer>();
-        }
+        private void Awake() => meshRenderer = GetComponent<MeshRenderer>();
 
         private void Start()
         {
@@ -28,6 +26,7 @@ namespace Assignment.Characters.Enemy
             currentHealth -= damageAmount;
             if (currentHealth <= 0)
             {
+                FindObjectOfType<PlayerManager>().GetComponent<IPlayerManager>().OnEnemyKilled();
                 Destroy(gameObject);
             }
 

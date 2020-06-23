@@ -303,7 +303,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: c9f6d0e7bc8541498c9a4799ba184ede, type: 3}
+    m_Font: {fileID: 12800000, guid: 2039d44f412bae146bc9ab05b931aa5e, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
@@ -748,7 +748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47e5eb9132e1e4e419a3722842f6929f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 1000
   healthFillImage: {fileID: 6198147058707132043}
 --- !u!114 &585742271
 MonoBehaviour:
@@ -1118,7 +1118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2248288629480154012
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1136,8 +1136,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -212.6, y: -173}
-  m_SizeDelta: {x: 258.78534, y: 135}
+  m_AnchoredPosition: {x: -212.6, y: -174}
+  m_SizeDelta: {x: 258.78534, y: 87.80803}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8383598125920448284
 CanvasRenderer:

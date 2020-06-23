@@ -1,111 +1,111 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!65 &191374650344495423
+--- !u!65 &1404809000179094060
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1128228297934196424}
+  m_GameObject: {fileID: 7292465209929707550}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1001 &3700212213420145495
+--- !u!1001 &1341091362918398023
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1399296628964947047, guid: 6ab5a7e4bbb96bb4f8397ac7ec418c56,
+    - target: {fileID: 4338965398894985722, guid: b4ba998a6beaefd4eb879cffebee7915,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-    - target: {fileID: 2303983445760562264, guid: 6ab5a7e4bbb96bb4f8397ac7ec418c56,
+    - target: {fileID: 4568822572360640821, guid: b4ba998a6beaefd4eb879cffebee7915,
         type: 3}
       propertyPath: pickupInfo
       value: 
       objectReference: {fileID: 11400000, guid: 800e923b70899954493674faca4b5fa7,
         type: 2}
-    - target: {fileID: 4215858182091509600, guid: 6ab5a7e4bbb96bb4f8397ac7ec418c56,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9b8d0c73c277cc8418e2e9ced68fe17e, type: 2}
-    - target: {fileID: 4215858182091509600, guid: 6ab5a7e4bbb96bb4f8397ac7ec418c56,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4391448133613221279, guid: 6ab5a7e4bbb96bb4f8397ac7ec418c56,
+    - target: {fileID: 8622292143800141913, guid: b4ba998a6beaefd4eb879cffebee7915,
         type: 3}
       propertyPath: m_Name
-      value: Yellow Cube Pickup
+      value: Yellow Cube
       objectReference: {fileID: 0}
-    - target: {fileID: 5305483223617127077, guid: 6ab5a7e4bbb96bb4f8397ac7ec418c56,
+    - target: {fileID: 8622292143800141914, guid: b4ba998a6beaefd4eb879cffebee7915,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5305483223617127077, guid: 6ab5a7e4bbb96bb4f8397ac7ec418c56,
+    - target: {fileID: 8622292143800141914, guid: b4ba998a6beaefd4eb879cffebee7915,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5305483223617127077, guid: 6ab5a7e4bbb96bb4f8397ac7ec418c56,
+    - target: {fileID: 8622292143800141914, guid: b4ba998a6beaefd4eb879cffebee7915,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5305483223617127077, guid: 6ab5a7e4bbb96bb4f8397ac7ec418c56,
+    - target: {fileID: 8622292143800141914, guid: b4ba998a6beaefd4eb879cffebee7915,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5305483223617127077, guid: 6ab5a7e4bbb96bb4f8397ac7ec418c56,
+    - target: {fileID: 8622292143800141914, guid: b4ba998a6beaefd4eb879cffebee7915,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5305483223617127077, guid: 6ab5a7e4bbb96bb4f8397ac7ec418c56,
+    - target: {fileID: 8622292143800141914, guid: b4ba998a6beaefd4eb879cffebee7915,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5305483223617127077, guid: 6ab5a7e4bbb96bb4f8397ac7ec418c56,
+    - target: {fileID: 8622292143800141914, guid: b4ba998a6beaefd4eb879cffebee7915,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5305483223617127077, guid: 6ab5a7e4bbb96bb4f8397ac7ec418c56,
+    - target: {fileID: 8622292143800141914, guid: b4ba998a6beaefd4eb879cffebee7915,
         type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5305483223617127077, guid: 6ab5a7e4bbb96bb4f8397ac7ec418c56,
+    - target: {fileID: 8622292143800141914, guid: b4ba998a6beaefd4eb879cffebee7915,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5305483223617127077, guid: 6ab5a7e4bbb96bb4f8397ac7ec418c56,
+    - target: {fileID: 8622292143800141914, guid: b4ba998a6beaefd4eb879cffebee7915,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5305483223617127077, guid: 6ab5a7e4bbb96bb4f8397ac7ec418c56,
+    - target: {fileID: 8622292143800141914, guid: b4ba998a6beaefd4eb879cffebee7915,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8816554330060686025, guid: b4ba998a6beaefd4eb879cffebee7915,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9b8d0c73c277cc8418e2e9ced68fe17e, type: 2}
+    - target: {fileID: 8816554330060686025, guid: b4ba998a6beaefd4eb879cffebee7915,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6ab5a7e4bbb96bb4f8397ac7ec418c56, type: 3}
---- !u!1 &1128228297934196424 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: b4ba998a6beaefd4eb879cffebee7915, type: 3}
+--- !u!1 &7292465209929707550 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 4391448133613221279, guid: 6ab5a7e4bbb96bb4f8397ac7ec418c56,
+  m_CorrespondingSourceObject: {fileID: 8622292143800141913, guid: b4ba998a6beaefd4eb879cffebee7915,
     type: 3}
-  m_PrefabInstance: {fileID: 3700212213420145495}
+  m_PrefabInstance: {fileID: 1341091362918398023}
   m_PrefabAsset: {fileID: 0}

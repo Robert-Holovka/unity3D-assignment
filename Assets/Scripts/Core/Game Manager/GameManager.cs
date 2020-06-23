@@ -1,4 +1,5 @@
 ﻿using Assignment.Characters.Enemy;
+using Assignment.Pickups;
 using Assignment.ScriptableObjects;
 using System.Collections;
 using System.Linq;

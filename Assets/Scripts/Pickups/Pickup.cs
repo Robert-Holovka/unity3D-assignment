@@ -1,13 +1,11 @@
-﻿using Assignment.Pickups;
-using Assignment.ScriptableObjects;
+﻿using Assignment.ScriptableObjects;
 using UnityEngine;
 
-public class Pickup : MonoBehaviour, IPickupableItem
+namespace Assignment.Pickups
 {
-    [SerializeField] ItemStats pickupInfo = default;
-    [SerializeField] int amount = 1;
-
-    public ItemStats ItemInfo { get => pickupInfo; }
-    public int Amount { get => amount; set => amount = value; }
-    public void OnItemPicked() => Destroy(gameObject);
+    public class Pickup : BasePickup
+    {
+        [SerializeField] protected ItemStats pickupInfo = default;
+        public override ItemStats ItemInfo => pickupInfo;
+    }
 }

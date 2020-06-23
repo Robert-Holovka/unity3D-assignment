@@ -7,10 +7,7 @@ namespace Assignment.ScriptableObjects
     {
         [SerializeField] ItemStats[] itemsToPick = default;
 
-        public ItemStats[] ItemsToPick
-        {
-            get => itemsToPick;
-        }
+        public ItemStats[] ItemsToPick => itemsToPick;
 
         public bool ContainsType(ItemStats itemInfo)
         {

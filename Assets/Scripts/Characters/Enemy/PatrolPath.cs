@@ -20,7 +20,6 @@ namespace Assignment.Characters.Enemy
         }
 
         public Vector3 GetWaypoint(int i) => transform.GetChild(i).position;
-
         public int GetNextWaypointIndex(int i) => (i + 1) % transform.childCount;
 
         public Vector3 GetNextWaypoint(int i, out int nextIndex)
@@ -31,8 +30,8 @@ namespace Assignment.Characters.Enemy
 
         public bool AtWaypoint(Vector3 position, int i)
         {
-            position.y = 0f;
             Vector3 waypoint = GetWaypoint(i);
+            position.y = 0f;
             waypoint.y = 0f;
 
             return Vector3.Distance(position, waypoint) <= Mathf.Epsilon;

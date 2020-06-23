@@ -9,7 +9,6 @@ namespace Assignment.Characters.Enemy
     {
         [SerializeField] float waypointDwellingTime = 3f;
 
-        // Cached
         private NavMeshAgent navMeshAgent;
         private PatrolPath patrolPath;
         private Timer timer;
@@ -31,20 +30,9 @@ namespace Assignment.Characters.Enemy
             timer.SetDuration(waypointDwellingTime);
         }
 
-        private void OnEnable()
-        {
-            timer.OnTimerFinish += MoveNext;
-        }
-
-        private void OnDisable()
-        {
-            timer.OnTimerFinish -= MoveNext;
-        }
-
-        private void Update()
-        {
-            PatrolBehaviour();
-        }
+        private void OnEnable() => timer.OnTimerFinish += MoveNext;
+        private void OnDisable() => timer.OnTimerFinish -= MoveNext;
+        private void Update() => PatrolBehaviour();
         #endregion
 
         private void PatrolBehaviour()

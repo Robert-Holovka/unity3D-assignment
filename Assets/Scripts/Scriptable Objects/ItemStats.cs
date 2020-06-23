@@ -2,7 +2,7 @@
 
 namespace Assignment.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "New Item Info", menuName = "Item Info", order = 1)]
+    [CreateAssetMenu(fileName = "New Item Info", menuName = "Item Info", order = 2)]
     public class ItemStats : ScriptableObject
     {
         [SerializeField] new string name = default;
@@ -10,26 +10,10 @@ namespace Assignment.ScriptableObjects
         [SerializeField] Sprite icon = default;
         [SerializeField] int maxStack = 1;
 
-        public string Name
-        {
-            get => name;
-        }
-
-        public string Type
-        {
-            get => type;
-        }
-
-        public int MaxStack
-        {
-            get => maxStack;
-        }
-
-        public Sprite Icon
-        {
-            get => icon;
-        }
-
+        public string Name => name;
+        public string Type => type;
+        public int MaxStack => maxStack;
+        public Sprite Icon => icon;
         public string GetTooltip(string key) => $"[{key}] Pick up {Name}";
     }
 }

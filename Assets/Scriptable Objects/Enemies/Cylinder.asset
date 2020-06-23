@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: Cylinder
   maxHealth: 100
-  lowHealthThreshold: 0.25
+  lowHealthThreshold: 0.3
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   lowHealthColor: {r: 1, g: 0, b: 0, a: 1}
