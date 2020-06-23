@@ -4,17 +4,14 @@ using UnityEngine;
 
 namespace Assignment.Characters.Player
 {
-    public class LeftClickAction : MonoBehaviour
+    public class LeftClickInWorld : MonoBehaviour
     {
-        [SerializeField] PlayerAction[] actions = default;
+        [SerializeField] BasePlayerAction[] actions = default;
 
-        private PlayerAction selectedAction;
+        private BasePlayerAction selectedAction;
         private bool canStart = true;
 
-        private void Start()
-        {
-            selectedAction = actions[0];
-        }
+        private void Start() => selectedAction = actions[0];
 
         void Update()
         {

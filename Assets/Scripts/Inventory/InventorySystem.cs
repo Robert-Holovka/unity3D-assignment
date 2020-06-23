@@ -2,6 +2,7 @@
 using Assignment.ScriptableObjects;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assignment.Inventory
 {
@@ -9,6 +10,9 @@ namespace Assignment.Inventory
     public class InventorySystem : MonoBehaviour, IInventorySystem
     {
         [SerializeField] byte numberOfSlots = 9;
+
+        public event UnityAction<ItemStats, int> OnItemAdd;
+        public event UnityAction<ItemStats, int> OnItemRemove;
 
         private List<ISlot> slots = new List<ISlot>();
 
@@ -57,6 +61,7 @@ namespace Assignment.Inventory
                 amount -= slots[i].AddStackPortion(item, amount);
                 if (amount == 0) break;
             }
+            OnItemAdd?.Invoke(item, initialAmount);
             return canStore;
         }
 
@@ -79,6 +84,7 @@ namespace Assignment.Inventory
                 if (slots[i].IsEmpty) continue;
                 if (slots[i].StoredItem.Type != item.Type) continue;
                 slots[i].RemoveStackPortion(1);
+                OnItemRemove?.Invoke(item, 1);
                 return true;
             }
             return false;
@@ -91,6 +97,7 @@ namespace Assignment.Inventory
             // Outside inventory
             if (objectsHit.Count == 0)
             {
+                OnItemRemove?.Invoke(from.StoredItem, from.SlotCount);
                 from.DropAll();
                 return;
             }
@@ -110,6 +117,7 @@ namespace Assignment.Inventory
             }
             // Outside inventory
             from.DropAll();
+            OnItemRemove?.Invoke(from.StoredItem, from.SlotCount);
         }
 
         private void OnStackSplitted(ISlot slot)

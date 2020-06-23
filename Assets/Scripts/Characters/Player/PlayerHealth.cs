@@ -13,10 +13,9 @@ namespace Assignment.Characters.Player
 
         private float currentHealth;
 
-        private void Start()
-        {
-            currentHealth = maxHealth;
-        }
+        private void Start() => currentHealth = maxHealth;
+        private void UpdateHealthUI() => healthFillImage.fillAmount = currentHealth / maxHealth;
+        private void Die() => FindObjectOfType<GameManager>().GetComponent<ILevelEventHandler>().OnPlayerDeath();
 
         public void TakeDamage(float damage)
         {
@@ -29,16 +28,6 @@ namespace Assignment.Characters.Player
             {
                 UpdateHealthUI();
             }
-        }
-
-        private void UpdateHealthUI()
-        {
-            healthFillImage.fillAmount = currentHealth / maxHealth;
-        }
-
-        private void Die()
-        {
-            FindObjectOfType<GameManager>().GetComponent<ILevelEventHandler>().OnPlayerDeath();
         }
 
         public void RestoreHealth(float healthPoints)

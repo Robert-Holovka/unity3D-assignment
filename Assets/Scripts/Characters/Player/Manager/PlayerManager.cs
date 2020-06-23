@@ -11,19 +11,20 @@ namespace Assignment.Characters.Player.Manager
         [SerializeField] GameObject inventoryPanel = default;
         [SerializeField] Text pickupGoalText = default;
 
-        public bool InInventory { get; private set; } = false;
-
         private ILevelEventHandler levelEventHandler;
-        private Interaction playerInteraction;
-        private LeftClickAction leftClickAction;
+        private WorldInteraction worldInteraction;
+        private LeftClickInWorld leftClickInWorld;
         private bool isGameRunning = true;
+        private bool inInventory = false;
 
         private void Awake()
         {
-            levelEventHandler = FindObjectOfType<GameManager>().GetComponent<ILevelEventHandler>();
-            playerInteraction = GetComponent<Interaction>();
-            leftClickAction = GetComponent<LeftClickAction>();
+            levelEventHandler = FindObjectOfType<GameManager>();
+            worldInteraction = GetComponent<WorldInteraction>();
+            leftClickInWorld = GetComponent<LeftClickInWorld>();
         }
+        private void OnEnable() => levelEventHandler.OnGameStateChange += OnGameStateChanged;
+        private void OnDisable() => levelEventHandler.OnGameStateChange -= OnGameStateChanged;
 
         private void Start()
         {
@@ -32,15 +33,37 @@ namespace Assignment.Characters.Player.Manager
             UpdatePlayerState(false);
         }
 
-        private void OnEnable() => levelEventHandler.OnGameStateChange += OnGameStateChanged;
-        private void OnDisable() => levelEventHandler.OnGameStateChange -= OnGameStateChanged;
-
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Tab) && isGameRunning)
             {
-                InInventory = !InInventory;
-                UpdatePlayerState(InInventory);
+                inInventory = !inInventory;
+                UpdatePlayerState(inInventory);
+            }
+        }
+
+        public void OnEnemyKilled() => levelEventHandler.OnEnemyKilled();
+
+        public void OnPickupCollected(ItemStats item, int amount)
+        {
+            if (levelEventHandler.IsRequiredPickup(item, amount))
+            {
+                pickupGoalText.text = levelEventHandler.GetPickupGoalText();
+            }
+        }
+
+        private void OnGameStateChanged(GameState gameState)
+        {
+            isGameRunning = gameState == GameState.Running;
+            playerCanvas.gameObject.SetActive(isGameRunning);
+            if (isGameRunning && !inInventory)
+            {
+                EnablePlayerComponents(true);
+                Cursor.visible = false;
+            }
+            else
+            {
+                EnablePlayerComponents(false);
             }
         }
 
@@ -48,28 +71,17 @@ namespace Assignment.Characters.Player.Manager
         {
             inventoryPanel.SetActive(inInventory);
             Cursor.visible = inInventory;
-
-            playerInteraction.enabled = !inInventory;
-            leftClickAction.enabled = !inInventory;
+            EnablePlayerComponents(!inInventory);
         }
 
-        public void OnEnemyKilled() => levelEventHandler.OnEnemyKilled();
-        public void OnPickupCollected(ItemStats item, int amount)
+        /// <summary>
+        /// Controls only player components that are unaffected by Time.scaleTime
+        /// </summary>
+        /// <param name="enabled"></param>
+        private void EnablePlayerComponents(bool enabled)
         {
-            if (levelEventHandler.OnPickupCollected(item, amount))
-            {
-                pickupGoalText.text = levelEventHandler.GetPickupGoalText();
-            }
-        }
-
-        public void OnGameStateChanged(GameState gameState)
-        {
-            isGameRunning = gameState == GameState.Running;
-            playerCanvas.gameObject.SetActive(isGameRunning);
-            if (isGameRunning && !InInventory)
-            {
-                Cursor.visible = false;
-            }
+            worldInteraction.enabled = enabled;
+            leftClickInWorld.enabled = enabled;
         }
     }
 }

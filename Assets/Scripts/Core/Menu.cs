@@ -16,7 +16,7 @@ namespace Assignment.Core
 
         private ILevelLoader levelManager;
 
-        private void Awake() => levelManager = FindObjectOfType<GameManager>().GetComponent<ILevelLoader>();
+        private void Awake() => levelManager = FindObjectOfType<GameManager>();
         private void OnEnable() => levelManager.OnGameStateChange += OnGameStateChanged;
         private void OnDisable() => levelManager.OnGameStateChange -= OnGameStateChanged;
 

@@ -6,7 +6,7 @@ namespace Assignment.Core.Game
     {
         string GetPickupGoalText();
         void OnEnemyKilled();
-        bool OnPickupCollected(ItemStats itemStats, int amount);
+        bool IsRequiredPickup(ItemStats itemStats, int amount);
         void OnPlayerDeath();
     }
 }

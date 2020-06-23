@@ -24,7 +24,6 @@ namespace Assignment.Core.Pooling
         {
             if (!ContainsPool(prefab)) return;
             if (!IsObjectPoolable(prefab)) return;
-
             string poolTag = prefab.name;
             Queue<GameObject> pool = poolDictionary[poolTag];
 
@@ -114,6 +113,7 @@ namespace Assignment.Core.Pooling
             for (int i = 0, n = pool.poolSize; i < n; i++)
             {
                 GameObject gameObject = Instantiate(pool.prefab);
+                gameObject.transform.name = pool.prefab.name;
                 gameObject.transform.parent = parentInScene.transform;
                 if (!IsObjectPoolable(gameObject))
                 {
@@ -131,7 +131,7 @@ namespace Assignment.Core.Pooling
         {
             GameObject parentInScene = new GameObject();
             parentInScene.transform.parent = transform;
-            parentInScene.name = pool.prefab.name;
+            parentInScene.name = pool.prefab.name + " Container";
             return parentInScene;
         }
 

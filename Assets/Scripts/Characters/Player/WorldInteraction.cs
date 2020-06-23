@@ -6,31 +6,29 @@ using UnityEngine.UI;
 
 namespace Assignment.Characters.Player
 {
-    public class Interaction : MonoBehaviour
+    public class WorldInteraction : MonoBehaviour
     {
         [SerializeField] GameObject tooltipPanel = default;
-        [SerializeField] float interactionRadius = 1f;
+        [SerializeField] float interactionRadius = 2f;
         [SerializeField] Color radiusColor = Color.blue;
 
         private readonly Vector3 cameraCenter = new Vector3(0.5f, 0.5f);
 
         private IInventorySystem inventorySystem;
         private IPlayerManager playerManager;
-        private new Camera camera;
+        private Camera playerCamera;
         private Text tooltipText;
 
         private void Awake()
         {
-            camera = GetComponentInChildren<Camera>();
-            inventorySystem = GetComponentInChildren<InventorySystem>();
             tooltipText = tooltipPanel.GetComponentInChildren<Text>();
+            playerCamera = GetComponentInChildren<Camera>();
+            inventorySystem = GetComponentInChildren<IInventorySystem>();
             playerManager = GetComponent<IPlayerManager>();
         }
 
-        private void Start()
-        {
-            tooltipPanel.SetActive(false);
-        }
+        private void Start() => tooltipPanel.SetActive(false);
+        private void OnDisable() => tooltipPanel.SetActive(false);
 
         private void Update()
         {
@@ -41,6 +39,14 @@ namespace Assignment.Characters.Player
             {
                 PickItem(pickup);
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = radiusColor;
+            Vector3 from = transform.position + Vector3.up * transform.localScale.y / 2;
+            Vector3 to = from + Vector3.forward * interactionRadius;
+            Gizmos.DrawLine(from, to);
         }
 
         private void PickItem(IPickupableItem pickup)
@@ -60,8 +66,6 @@ namespace Assignment.Characters.Player
 
         private void UpdateTooltipUI(bool active, IPickupableItem pickup)
         {
-            if (playerManager.InInventory) return;
-
             tooltipPanel.SetActive(active);
             if (active)
             {
@@ -71,19 +75,13 @@ namespace Assignment.Characters.Player
 
         private bool FindNearbyPickup(out IPickupableItem pickup)
         {
-            Ray ray = camera.ViewportPointToRay(cameraCenter);
+            Ray ray = playerCamera.ViewportPointToRay(cameraCenter);
             if (Physics.Raycast(ray, out RaycastHit hitInfo, interactionRadius))
             {
                 return hitInfo.collider.TryGetComponent(out pickup);
             }
             pickup = null;
             return false;
-        }
-
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = radiusColor;
-            Gizmos.DrawWireSphere(transform.position, interactionRadius);
         }
     }
 }

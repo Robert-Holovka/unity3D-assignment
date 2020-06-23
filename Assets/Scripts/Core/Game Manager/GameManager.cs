@@ -64,7 +64,7 @@ namespace Assignment.Core.Game
             CheckForVictory();
         }
 
-        public bool OnPickupCollected(ItemStats itemStats, int amount)
+        public bool IsRequiredPickup(ItemStats itemStats, int amount)
         {
             if (levelGoal.ContainsType(itemStats))
             {
@@ -93,7 +93,7 @@ namespace Assignment.Core.Game
             pickupsCollected = 0;
 
             enemiesToKill = FindObjectsOfType<EnemyHealth>().Length;
-            Pickup[] pickups = FindObjectsOfType<Pickup>();
+            IPickupableItem[] pickups = FindObjectsOfType<Pickup>();
             pickupsToCollect = pickups
                 .Where(p => levelGoal.ContainsType(p.ItemInfo))
                 .Sum(p => p.Amount);

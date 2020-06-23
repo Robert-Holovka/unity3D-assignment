@@ -1,8 +1,10 @@
-﻿namespace Assignment.Core.Pooling
+﻿using UnityEngine;
+using UnityEngine.Events;
+
+namespace Assignment.Core.Pooling
 {
     public interface IPoolableObject
     {
-        void OnObjectActivation();
-        void OnObjectDeactivation();
+        void OnObjectActivation(UnityAction<GameObject> callback);
     }
 }

@@ -15,6 +15,8 @@ namespace Assignment.Characters.Player.Movement
 
         private void Update()
         {
+            if (Time.timeScale == 0f) return;
+
             float yaw = Input.GetAxis("Mouse X") * mouseSensitivity;
             pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
 
