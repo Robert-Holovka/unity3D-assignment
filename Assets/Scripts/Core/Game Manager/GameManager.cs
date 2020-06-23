@@ -110,7 +110,7 @@ namespace Assignment.Core.Game
         private IEnumerator LoadLevelAsync()
         {
             SetGameState(Loading);
-            AsyncOperation loading = SceneManager.LoadSceneAsync("Sandbox");
+            AsyncOperation loading = SceneManager.LoadSceneAsync("World");
 
             // 0.0 - 0.9 (Unity Loading)
             while (!loading.isDone)
@@ -118,10 +118,10 @@ namespace Assignment.Core.Game
                 UpdateLoadingUI(loading.progress);
                 yield return null;
             }
-            // 0.9 - 1.0 (Unity Activation + custom loading)
+            // 0.9 - 1.0 (Unity Activation + custom initialization)
             UpdateLoadingUI(0.95f);
             yield return null;
-            OnLevelLoaded("Sandbox");
+            OnLevelLoaded("World");
             UpdateLoadingUI(1.0f);
             yield return null;
 
