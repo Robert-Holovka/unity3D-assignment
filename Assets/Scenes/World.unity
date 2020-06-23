@@ -21,7 +21,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.41509432, g: 0.38616908, b: 0.37789246, a: 1}
+  m_AmbientSkyColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -224,10 +224,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Orange Sphere (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 9062148907991511213, guid: ab2a4c5f1a11b6d4fac226f8b2ee68dd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 9062148907991511214, guid: ab2a4c5f1a11b6d4fac226f8b2ee68dd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.094
+      value: -1.647
       objectReference: {fileID: 0}
     - target: {fileID: 9062148907991511214, guid: ab2a4c5f1a11b6d4fac226f8b2ee68dd,
         type: 3}
@@ -237,7 +242,7 @@ PrefabInstance:
     - target: {fileID: 9062148907991511214, guid: ab2a4c5f1a11b6d4fac226f8b2ee68dd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -33.136
+      value: -34.995
       objectReference: {fileID: 0}
     - target: {fileID: 9062148907991511214, guid: ab2a4c5f1a11b6d4fac226f8b2ee68dd,
         type: 3}
@@ -321,7 +326,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &118992220
 Transform:
@@ -353,6 +358,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Orange Sphere (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062148907991511213, guid: ab2a4c5f1a11b6d4fac226f8b2ee68dd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 9062148907991511214, guid: ab2a4c5f1a11b6d4fac226f8b2ee68dd,
         type: 3}
@@ -428,6 +438,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Purple Sphere (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330594660642074921, guid: a509fb9ca2370f34a92811ecda0fb253,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1330594660642074922, guid: a509fb9ca2370f34a92811ecda0fb253,
         type: 3}
@@ -684,6 +699,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Yellow Cube (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7292465209929707550, guid: 709a00d6a34aed7408a7fb925f4c755b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 709a00d6a34aed7408a7fb925f4c755b, type: 3}
 --- !u!4 &199362235 stripped
@@ -876,6 +896,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Purple Sphere (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1330594660642074921, guid: a509fb9ca2370f34a92811ecda0fb253,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 1330594660642074922, guid: a509fb9ca2370f34a92811ecda0fb253,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -950,6 +975,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Purple Sphere (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330594660642074921, guid: a509fb9ca2370f34a92811ecda0fb253,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1330594660642074922, guid: a509fb9ca2370f34a92811ecda0fb253,
         type: 3}
@@ -1170,6 +1200,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Orange Sphere (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062148907991511213, guid: ab2a4c5f1a11b6d4fac226f8b2ee68dd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 9062148907991511214, guid: ab2a4c5f1a11b6d4fac226f8b2ee68dd,
         type: 3}
@@ -1396,6 +1431,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Green Cube (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1126406685896521054, guid: 747ee574fb1d76f449f245ccbaaab8df,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 747ee574fb1d76f449f245ccbaaab8df, type: 3}
 --- !u!4 &519425681 stripped
@@ -1470,6 +1510,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Green Cube (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1126406685896521054, guid: 747ee574fb1d76f449f245ccbaaab8df,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 747ee574fb1d76f449f245ccbaaab8df, type: 3}
@@ -1815,6 +1860,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Yellow Cube (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7292465209929707550, guid: 709a00d6a34aed7408a7fb925f4c755b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 709a00d6a34aed7408a7fb925f4c755b, type: 3}
@@ -2325,7 +2375,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 1849674a3ae4ff740a83adc0de87934c,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 1849674a3ae4ff740a83adc0de87934c,
         type: 3}
@@ -2384,7 +2434,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &871079579
 Transform:
@@ -2571,6 +2621,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Yellow Cube (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7292465209929707550, guid: 709a00d6a34aed7408a7fb925f4c755b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 709a00d6a34aed7408a7fb925f4c755b, type: 3}
@@ -2793,7 +2848,7 @@ PrefabInstance:
     - target: {fileID: 1126406685896521053, guid: 747ee574fb1d76f449f245ccbaaab8df,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.35
+      value: -1.38
       objectReference: {fileID: 0}
     - target: {fileID: 1126406685896521053, guid: 747ee574fb1d76f449f245ccbaaab8df,
         type: 3}
@@ -2803,7 +2858,7 @@ PrefabInstance:
     - target: {fileID: 1126406685896521053, guid: 747ee574fb1d76f449f245ccbaaab8df,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -37.06
+      value: -40.57
       objectReference: {fileID: 0}
     - target: {fileID: 1126406685896521053, guid: 747ee574fb1d76f449f245ccbaaab8df,
         type: 3}
@@ -2850,6 +2905,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Green Cube (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1126406685896521054, guid: 747ee574fb1d76f449f245ccbaaab8df,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 747ee574fb1d76f449f245ccbaaab8df, type: 3}
 --- !u!4 &1000463704 stripped
@@ -2869,6 +2929,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Orange Sphere
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062148907991511213, guid: ab2a4c5f1a11b6d4fac226f8b2ee68dd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 9062148907991511214, guid: ab2a4c5f1a11b6d4fac226f8b2ee68dd,
         type: 3}
@@ -2964,6 +3029,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Purple Sphere (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330594660642074921, guid: a509fb9ca2370f34a92811ecda0fb253,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1330594660642074922, guid: a509fb9ca2370f34a92811ecda0fb253,
         type: 3}
@@ -3619,6 +3689,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Purple Sphere
       objectReference: {fileID: 0}
+    - target: {fileID: 1330594660642074921, guid: a509fb9ca2370f34a92811ecda0fb253,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 1330594660642074922, guid: a509fb9ca2370f34a92811ecda0fb253,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3693,6 +3768,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Orange Sphere (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062148907991511213, guid: ab2a4c5f1a11b6d4fac226f8b2ee68dd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 9062148907991511214, guid: ab2a4c5f1a11b6d4fac226f8b2ee68dd,
         type: 3}
@@ -3847,7 +3927,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1272683283
 Transform:
@@ -3936,6 +4016,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Green Cube (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1126406685896521054, guid: 747ee574fb1d76f449f245ccbaaab8df,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 747ee574fb1d76f449f245ccbaaab8df, type: 3}
@@ -4026,7 +4111,7 @@ PrefabInstance:
     - target: {fileID: 7292465209929707549, guid: 709a00d6a34aed7408a7fb925f4c755b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.28
+      value: 0.697
       objectReference: {fileID: 0}
     - target: {fileID: 7292465209929707549, guid: 709a00d6a34aed7408a7fb925f4c755b,
         type: 3}
@@ -4036,27 +4121,27 @@ PrefabInstance:
     - target: {fileID: 7292465209929707549, guid: 709a00d6a34aed7408a7fb925f4c755b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -33.253
+      value: -35.193
       objectReference: {fileID: 0}
     - target: {fileID: 7292465209929707549, guid: 709a00d6a34aed7408a7fb925f4c755b,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7292465209929707549, guid: 709a00d6a34aed7408a7fb925f4c755b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.35000613
       objectReference: {fileID: 0}
     - target: {fileID: 7292465209929707549, guid: 709a00d6a34aed7408a7fb925f4c755b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7292465209929707549, guid: 709a00d6a34aed7408a7fb925f4c755b,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.93674743
       objectReference: {fileID: 0}
     - target: {fileID: 7292465209929707549, guid: 709a00d6a34aed7408a7fb925f4c755b,
         type: 3}
@@ -4071,7 +4156,7 @@ PrefabInstance:
     - target: {fileID: 7292465209929707549, guid: 709a00d6a34aed7408a7fb925f4c755b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -40.975002
       objectReference: {fileID: 0}
     - target: {fileID: 7292465209929707549, guid: 709a00d6a34aed7408a7fb925f4c755b,
         type: 3}
@@ -4082,6 +4167,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Yellow Cube (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7292465209929707550, guid: 709a00d6a34aed7408a7fb925f4c755b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 709a00d6a34aed7408a7fb925f4c755b, type: 3}
@@ -4558,6 +4648,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Yellow Cube (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 7292465209929707550, guid: 709a00d6a34aed7408a7fb925f4c755b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 709a00d6a34aed7408a7fb925f4c755b, type: 3}
 --- !u!4 &1429997162 stripped
@@ -4633,6 +4728,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Green Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 1126406685896521054, guid: 747ee574fb1d76f449f245ccbaaab8df,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 747ee574fb1d76f449f245ccbaaab8df, type: 3}
 --- !u!4 &1445131799 stripped
@@ -4655,7 +4755,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1449425477
 Transform:
@@ -4873,6 +4973,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Purple Sphere (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1330594660642074921, guid: a509fb9ca2370f34a92811ecda0fb253,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 1330594660642074922, guid: a509fb9ca2370f34a92811ecda0fb253,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4947,6 +5052,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Purple Sphere (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330594660642074921, guid: a509fb9ca2370f34a92811ecda0fb253,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1330594660642074922, guid: a509fb9ca2370f34a92811ecda0fb253,
         type: 3}
@@ -5078,6 +5188,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Yellow Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 7292465209929707550, guid: 709a00d6a34aed7408a7fb925f4c755b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 709a00d6a34aed7408a7fb925f4c755b, type: 3}
 --- !u!4 &1492684994 stripped
@@ -5097,6 +5212,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Purple Sphere (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330594660642074921, guid: a509fb9ca2370f34a92811ecda0fb253,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1330594660642074922, guid: a509fb9ca2370f34a92811ecda0fb253,
         type: 3}
@@ -5501,7 +5621,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1758603451
 Transform:
@@ -5569,6 +5689,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Purple Sphere (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330594660642074921, guid: a509fb9ca2370f34a92811ecda0fb253,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1330594660642074922, guid: a509fb9ca2370f34a92811ecda0fb253,
         type: 3}
@@ -5699,6 +5824,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Yellow Cube (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7292465209929707550, guid: 709a00d6a34aed7408a7fb925f4c755b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 709a00d6a34aed7408a7fb925f4c755b, type: 3}
@@ -6130,6 +6260,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Purple Sphere (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330594660642074921, guid: a509fb9ca2370f34a92811ecda0fb253,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 1330594660642074922, guid: a509fb9ca2370f34a92811ecda0fb253,
         type: 3}

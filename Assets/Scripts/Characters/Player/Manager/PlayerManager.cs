@@ -56,6 +56,8 @@ namespace Assignment.Characters.Player.Manager
         {
             isGameRunning = gameState == GameState.Running;
             playerCanvas.gameObject.SetActive(isGameRunning);
+            pickupGoalText.text = levelEventHandler.GetPickupGoalText();
+
             if (isGameRunning && !inInventory)
             {
                 EnablePlayerComponents(true);

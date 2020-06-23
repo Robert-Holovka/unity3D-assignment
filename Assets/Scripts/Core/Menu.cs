@@ -49,6 +49,7 @@ namespace Assignment.Core
             titleText.text = title;
             this.loadSceneBtnText.text = loadSceneBtnText;
             menuCanvas.enabled = enabled;
+            Cursor.visible = enabled;
         }
 
         public void OnLoadSceneButtonClicked() => levelManager.LoadLevel();

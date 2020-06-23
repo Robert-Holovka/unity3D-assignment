@@ -123,7 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actionStats: {fileID: 11400000, guid: 862acc49550d18a4a8c91e01fa9caaef, type: 2}
   ammoAmountText: {fileID: 740886126}
-  throwForce: 10
+  throwForce: 15
   startPoint: {fileID: 6705321728543423443}
   grenade: {fileID: 1811068382503839720, guid: 3f37866d56a9ca940ac06c37b4e6d4f0, type: 3}
 --- !u!1 &1457871012
@@ -883,7 +883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b13458e345b4f4e954dce8f1c9f0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 7
   jumpForce: 130
 --- !u!1 &6198147059990603654
 GameObject:
