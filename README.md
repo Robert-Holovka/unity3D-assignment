@@ -1,13 +1,14 @@
 # unity3D-assignment
 
 <h3> Destroy all cylinders  and collect green and yellow cubes in order to pass the game. </h3>
-Throw grenades, pick or destroy objects.
+
+Throw grenades, pick or destroy objects:
   - Green cubes (pickupable)
   - Yellow cubes (pickupable)
   - Orange sphere (pickupable, player's ammo)
   - Purple sphere (pickupable, damageable)
-  - White cylinders (enemies)
-
+  - White cylinders (enemies) <br>
+<br>
 
 |  Combat |
 | :--------------------------------------------------------------: |
@@ -24,7 +25,7 @@ Throw grenades, pick or destroy objects.
 
 | Inventory system: destroy, move, merge, swap & split stack. |
 | :--------------------------------------------------------------: |
-| ![Combat](Readme%20Resources/combat.gif) |
+| ![Inventory](Readme%20Resources/inventory.gif) |
 
 <h3>Controls</h3>
 
@@ -34,5 +35,6 @@ Throw grenades, pick or destroy objects.
 |      Mouse Rotation      | Look Rotation |
 |           Space          |    Jumping    |
 |        Left Click        |    Throwing   |
+|             E            |     Pick up   |
 |            Tab           |   Inventory   |
 |          Escape          |   Pause Menu  |
