@@ -1,12 +1,12 @@
 # unity3D-assignment
 
-<h3> Destroy all cylinders  and collect green and yellow cubes in order to pass the game. </h3>
+<h3> Destroy all cylinders and collect green and yellow cubes in order to pass the game. </h3>
 
 Throw grenades, pick or destroy objects:
-  - Green cubes (pickupable)
-  - Yellow cubes (pickupable)
-  - Orange sphere (pickupable, player's ammo)
-  - Purple sphere (pickupable, damageable)
+  - Green cubes (pickable)
+  - Yellow cubes (pickable)
+  - Orange sphere (pickable, player's ammo)
+  - Purple sphere (pickable, damageable)
   - White cylinders (enemies) <br>
 <br>
 
