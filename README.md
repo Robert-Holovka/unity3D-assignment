@@ -1,4 +1,4 @@
-# unity3D-assignment
+# unity3D-cylinder-destroyer
 
 <h3> Destroy all cylinders and collect green and yellow cubes in order to pass the game. </h3>
 
